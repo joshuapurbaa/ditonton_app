@@ -1,3 +1,4 @@
+import 'package:ditonton/common/network_info.dart';
 import 'package:ditonton/data/datasources/db/database_helper.dart';
 import 'package:ditonton/data/datasources/movie_local_data_source.dart';
 import 'package:ditonton/data/datasources/movie_remote_data_source.dart';
@@ -80,6 +81,7 @@ void init() {
     () => MovieRepositoryImpl(
       remoteDataSource: locator(),
       localDataSource: locator(),
+      networkInfo: locator(),
     ),
   );
 
@@ -91,6 +93,9 @@ void init() {
 
   // helper
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
+
+  // network info
+  locator.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(locator()));
 
   // external
   locator.registerLazySingleton(() => http.Client());
