@@ -121,7 +121,7 @@ class TvRepositoryImpl implements TvRepository {
   Future<Either<Failure, String>> saveWatchlistTv(TvDetail tv) async {
     try {
       final result =
-          await localDataSource.insertWatchListTv(TvTable.fromEntity(tv));
+          await localDataSource.insertWatchlistTv(TvTable.fromEntity(tv));
       return Right(result);
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));

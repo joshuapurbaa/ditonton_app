@@ -34,7 +34,8 @@ class DatabaseHelper {
   }
 
   void _onCreate(Database db, int version) async {
-    await db.execute('''
+    await db.execute(
+        '''
       CREATE TABLE  $_tblWatchlist (
         id INTEGER PRIMARY KEY,
         title TEXT,
@@ -42,12 +43,25 @@ class DatabaseHelper {
         posterPath TEXT
       );
     ''');
-    await db.execute('''CREATE TABLE $_tblWatchlistTv (
-      id INTEGER PRIMARY KEY,
-      name TEXT,
-      overview TEXT,
-      posterPath TEXT,
-    );''');
+    await db.execute(
+        '''
+      CREATE TABLE  $_tblCache (
+        id INTEGER PRIMARY KEY,
+        title TEXT,
+        overview TEXT,
+        posterPath TEXT,
+        category TEXT
+      );
+    ''');
+    await db.execute(
+        '''
+      CREATE TABLE  $_tblWatchlistTv (
+        id INTEGER PRIMARY KEY,
+        name TEXT,
+        overview TEXT,
+        posterPath TEXT
+      );
+    ''');
   }
 
   /* MOVIES */
