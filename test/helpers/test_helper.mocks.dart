@@ -193,6 +193,17 @@ class MockMovieLocalDataSource extends _i1.Mock
           returnValue: Future<List<_i13.MovieTable>>.value(<_i13.MovieTable>[]))
       as _i6.Future<List<_i13.MovieTable>>);
   @override
+  _i6.Future<void> cacheNowPlayingMovies(List<_i13.MovieTable>? movies) =>
+      (super.noSuchMethod(Invocation.method(#cacheNowPlayingMovies, [movies]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i6.Future<void>);
+  @override
+  _i6.Future<List<_i13.MovieTable>> getCachedNowPlayingMovies() =>
+      (super.noSuchMethod(Invocation.method(#getCachedNowPlayingMovies, []),
+              returnValue:
+                  Future<List<_i13.MovieTable>>.value(<_i13.MovieTable>[]))
+          as _i6.Future<List<_i13.MovieTable>>);
+  @override
   String toString() => super.toString();
 }
 
@@ -209,6 +220,23 @@ class MockDatabaseHelper extends _i1.Mock implements _i14.DatabaseHelper {
       (super.noSuchMethod(Invocation.getter(#database),
               returnValue: Future<_i15.Database?>.value())
           as _i6.Future<_i15.Database?>);
+  @override
+  _i6.Future<void> insertCacheTransaction(
+          List<_i13.MovieTable>? movies, String? category) =>
+      (super.noSuchMethod(
+          Invocation.method(#insertCacheTransaction, [movies, category]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i6.Future<void>);
+  @override
+  _i6.Future<List<Map<String, dynamic>>> getCacheMovies(String? category) =>
+      (super.noSuchMethod(Invocation.method(#getCacheMovies, [category]),
+              returnValue: Future<List<Map<String, dynamic>>>.value(
+                  <Map<String, dynamic>>[]))
+          as _i6.Future<List<Map<String, dynamic>>>);
+  @override
+  _i6.Future<int> clearCache(String? category) =>
+      (super.noSuchMethod(Invocation.method(#clearCache, [category]),
+          returnValue: Future<int>.value(0)) as _i6.Future<int>);
   @override
   _i6.Future<int> insertWatchlist(_i13.MovieTable? movie) =>
       (super.noSuchMethod(Invocation.method(#insertWatchlist, [movie]),
