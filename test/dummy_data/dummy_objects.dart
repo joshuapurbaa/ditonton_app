@@ -78,7 +78,7 @@ final testTvDetail = TvDetail(
     )
   ],
   episodeRunTime: [1, 2],
-  firstAirDate: DateTime.parse("2012-02-27"),
+  firstAirDate: DateTime.parse("2014-04-14"),
   genres: [
     Genre(
       id: 1,

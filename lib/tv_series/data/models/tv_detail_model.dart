@@ -28,8 +28,8 @@ class TvDetailModel extends Equatable {
     required this.inProduction,
     required this.languages,
     required this.lastAirDate,
-    required this.lastEpisode,
-    required this.nextEpisode,
+    required this.lastEpisodeToAir,
+    required this.nextEpisodeToAir,
     required this.networks,
     required this.numberOfEpisodes,
     required this.numberOfSeasons,
@@ -61,8 +61,8 @@ class TvDetailModel extends Equatable {
   final bool inProduction;
   final List<String> languages;
   final DateTime lastAirDate;
-  final TVLastEpisodesToAirModel lastEpisode;
-  final dynamic nextEpisode;
+  final TVLastEpisodesToAirModel lastEpisodeToAir;
+  final dynamic nextEpisodeToAir;
   final List<TvNetworkModel> networks;
   final int numberOfEpisodes;
   final int numberOfSeasons;
@@ -101,9 +101,9 @@ class TvDetailModel extends Equatable {
         inProduction: json["in_production"],
         languages: List<String>.from(json["languages"].map((x) => x)),
         lastAirDate: DateTime.parse(json["last_air_date"]),
-        lastEpisode:
+        lastEpisodeToAir:
             TVLastEpisodesToAirModel.fromJson(json['last_episode_to_air']),
-        nextEpisode: json["next_episode_to_air"],
+        nextEpisodeToAir: json["next_episode_to_air"],
         networks: List<TvNetworkModel>.from(
             json["networks"].map((x) => TvNetworkModel.fromJson(x))),
         numberOfEpisodes: json["number_of_episodes"],
@@ -143,8 +143,8 @@ class TvDetailModel extends Equatable {
         inProduction: this.inProduction,
         languages: this.languages,
         lastAirDate: this.lastAirDate,
-        lastEpisodeToAir: this.lastEpisode.toEntity(),
-        nextEpisodeToAir: this.nextEpisode,
+        lastEpisodeToAir: this.lastEpisodeToAir.toEntity(),
+        nextEpisodeToAir: this.nextEpisodeToAir,
         networks: this.networks.map((x) => x.toEntity()).toList(),
         numberOfEpisodes: this.numberOfEpisodes,
         numberOfSeasons: this.numberOfSeasons,
@@ -183,8 +183,8 @@ class TvDetailModel extends Equatable {
         inProduction,
         languages,
         lastAirDate,
-        lastEpisode,
-        nextEpisode,
+        lastEpisodeToAir,
+        nextEpisodeToAir,
         networks,
         numberOfEpisodes,
         numberOfSeasons,

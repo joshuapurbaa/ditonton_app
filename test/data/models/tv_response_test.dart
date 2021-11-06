@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:ditonton/tv_series/data/models/tv_model.dart';
+import 'package:ditonton/tv_series/data/models/tv_response.dart';
 import 'package:ditonton/tv_series/domain/entities/tv.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import '../../json_reader.dart';
 
 void main() {
   final tTvModel = TvModel(
@@ -37,8 +42,16 @@ void main() {
     originalName: "Game of Thrones",
   );
 
-  test('should be a subclass of tv entity', () async {
-    final result = tTvModel.toEntity();
-    expect(result, tTv);
+  final tTvResponseModel = TvResponse(tvList: <TvModel>[tTvModel]);
+  group('fromJson', () {
+    test('should return a valid model from JSON', () async {
+      // arrange
+      final Map<String, dynamic> jsonMap =
+          json.decode(readJson('dummy_data/tv_search.json'));
+      // act
+      final result = TvResponse.fromJson(jsonMap);
+      // assert
+      expect(result, tTvResponseModel);
+    });
   });
 }
