@@ -12,7 +12,7 @@ void main() {
 
   setUp(() {
     mockTvRepository = MockTvRepository();
-    usecase = GetWatchListTVs(mockTvRepository);
+    usecase = GetWatchListTVs(repository: mockTvRepository);
   });
 
   test('should get list of tv series from the repository', () async {

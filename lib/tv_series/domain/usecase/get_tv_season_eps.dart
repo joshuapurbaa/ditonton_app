@@ -5,7 +5,7 @@ import '../repositories/tv_repository.dart';
 
 class GetTvSeasonEpisodes {
   final TvRepository repository;
-  GetTvSeasonEpisodes(this.repository);
+  GetTvSeasonEpisodes({required this.repository});
 
   Future<Either<Failure, List<TvEpisode>>> execute(int id, int seasonNumber) {
     return repository.getTvSeasonEpisodes(id, seasonNumber);

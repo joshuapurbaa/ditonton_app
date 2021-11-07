@@ -5,7 +5,7 @@ import '../repositories/tv_repository.dart';
 
 class SaveWatchlistTv {
   final TvRepository repository;
-  SaveWatchlistTv(this.repository);
+  SaveWatchlistTv({required this.repository});
 
   Future<Either<Failure, String>> execute(TvDetail tv) {
     return repository.saveWatchlistTv(tv);

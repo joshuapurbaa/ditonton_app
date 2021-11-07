@@ -12,7 +12,7 @@ void main() {
 
   setUp(() {
     mockTvRepository = MockTvRepository();
-    usecase = SaveWatchlistTv(mockTvRepository);
+    usecase = SaveWatchlistTv(repository: mockTvRepository);
   });
 
   test('should save tv to the repository', () async {

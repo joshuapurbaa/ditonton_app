@@ -5,7 +5,7 @@ import '../repositories/tv_repository.dart';
 
 class GetTvRecommendations {
   final TvRepository repository;
-  GetTvRecommendations(this.repository);
+  GetTvRecommendations({required this.repository});
 
   Future<Either<Failure, List<Tv>>> execute(id) {
     return repository.getTvRecommendations(id);

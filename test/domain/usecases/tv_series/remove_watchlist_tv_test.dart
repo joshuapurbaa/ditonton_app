@@ -12,7 +12,7 @@ void main() {
 
   setUp(() {
     mockTvRepository = MockTvRepository();
-    usecase = RemoveWatchlistTv(mockTvRepository);
+    usecase = RemoveWatchlistTv(repository: mockTvRepository);
   });
 
   test('should remove watchlist tv from repository', () async {

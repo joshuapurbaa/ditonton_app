@@ -5,7 +5,7 @@ import '../repositories/tv_repository.dart';
 
 class RemoveWatchlistTv {
   final TvRepository repository;
-  RemoveWatchlistTv(this.repository);
+  RemoveWatchlistTv({required this.repository});
 
   Future<Either<Failure, String>> execute(TvDetail tv) {
     return repository.removeWatchlistTv(tv);
