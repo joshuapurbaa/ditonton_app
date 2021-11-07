@@ -53,7 +53,7 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
           _buildSubHeading(
             title: 'Popular',
             onTap: () {
-              Navigator.pushNamed(context, PopularTvSeriesPage.ROUTE_NAME);
+              Navigator.pushNamed(context, PopularTvPage.ROUTE_NAME);
             },
           ),
           Consumer<TVListNotifier>(
@@ -76,6 +76,18 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
               Navigator.pushNamed(context, TopRatedTvPage.ROUTE_NAME);
             },
           ),
+          Consumer<TVListNotifier>(builder: (context, data, child) {
+            final state = data.topRatedTVsState;
+            if (state == RequestState.Loading) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state == RequestState.Loaded) {
+              return TvSeriesList(data.topRatedTVs);
+            } else {
+              return Text('Failed');
+            }
+          }),
         ],
       ),
     );
