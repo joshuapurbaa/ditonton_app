@@ -5,7 +5,7 @@ import '../repositories/tv_repository.dart';
 
 class GetDetailTVs {
   final TvRepository repository;
-  GetDetailTVs({required this.repository});
+  GetDetailTVs(this.repository);
 
   Future<Either<Failure, TvDetail>> execute(int id) {
     return repository.getDetailTVs(id);

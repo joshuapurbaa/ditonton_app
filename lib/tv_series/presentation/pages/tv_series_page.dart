@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/tv_series/domain/entities/tv.dart';
+import 'package:ditonton/tv_series/presentation/pages/detail_tv_page.dart';
 import 'package:ditonton/tv_series/presentation/pages/popular_tv_series_page.dart';
+import 'package:ditonton/tv_series/presentation/pages/top_rated_tv_page.dart';
 import 'package:ditonton/tv_series/presentation/provider/list_tv_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -54,6 +56,26 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
               Navigator.pushNamed(context, PopularTvSeriesPage.ROUTE_NAME);
             },
           ),
+          Consumer<TVListNotifier>(
+            builder: (context, data, child) {
+              final state = data.popularTVsState;
+              if (state == RequestState.Loading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state == RequestState.Loaded) {
+                return TvSeriesList(data.popularTVs);
+              } else {
+                return Text('Failed');
+              }
+            },
+          ),
+          _buildSubHeading(
+            title: 'Top Rated',
+            onTap: () {
+              Navigator.pushNamed(context, TopRatedTvPage.ROUTE_NAME);
+            },
+          ),
         ],
       ),
     );
@@ -98,11 +120,11 @@ class TvSeriesList extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: InkWell(
               onTap: () {
-                // Navigator.pushNamed(
-                //   context,
-                //   TvSeriesDetailPage.ROUTE_NAME,
-                //   arguments: tv.id,
-                // );
+                Navigator.pushNamed(
+                  context,
+                  DetailTvPage.ROUTE_NAME,
+                  arguments: tv.id,
+                );
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(16)),

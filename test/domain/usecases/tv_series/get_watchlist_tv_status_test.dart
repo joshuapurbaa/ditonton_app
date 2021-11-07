@@ -10,7 +10,7 @@ void main() {
 
   setUp(() {
     mockTvRepository = MockTvRepository();
-    usecase = GetTvWatchListStatus(repository: mockTvRepository);
+    usecase = GetTvWatchListStatus(mockTvRepository);
   });
 
   test('should get watchlist tv status from repository', () async {

@@ -12,7 +12,7 @@ void main() {
 
   setUp(() {
     mockTvRepository = MockTvRepository();
-    usecase = SearchTVs(repository: mockTvRepository);
+    usecase = SearchTVs(mockTvRepository);
   });
 
   final tTVs = <Tv>[];

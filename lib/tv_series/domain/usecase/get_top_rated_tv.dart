@@ -5,7 +5,7 @@ import '../repositories/tv_repository.dart';
 
 class GetTopRatedTVs {
   final TvRepository repository;
-  GetTopRatedTVs({required this.repository});
+  GetTopRatedTVs(this.repository);
 
   Future<Either<Failure, List<Tv>>> execute() {
     return repository.getTopRatedTVs();
