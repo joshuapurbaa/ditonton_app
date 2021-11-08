@@ -50,6 +50,8 @@ final locator = GetIt.instance;
 
 void init() {
   // provider
+
+  // Movie
   locator.registerFactory(
     () => MovieListNotifier(
       getNowPlayingMovies: locator(),
@@ -87,6 +89,7 @@ void init() {
     ),
   );
 
+// TV Series
   locator.registerFactory(
     () => TVListNotifier(
       getTvAiringToday: locator(),
@@ -110,12 +113,6 @@ void init() {
       getWatchListTVs: locator(),
     ),
   );
-
-  // locator.registerFactory(
-  //   () => TvRecommendationNotifier(
-  //     getTvRecommendations: locator(),
-  //   ),
-  // );
 
   locator.registerFactory(
     () => TopRatedTvNotifier(

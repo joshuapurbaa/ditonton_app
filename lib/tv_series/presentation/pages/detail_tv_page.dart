@@ -5,6 +5,7 @@ import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/tv_series/domain/entities/tv.dart';
 import 'package:ditonton/tv_series/domain/entities/tv_detail.dart';
 import 'package:ditonton/tv_series/presentation/provider/detail_tv_notifier.dart';
+import 'package:ditonton/tv_series/presentation/widgets/tv_air_date.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
@@ -194,74 +195,6 @@ class DetailContent extends StatelessWidget {
                             Text(
                               tvDetail.overview,
                             ),
-                            // if (tvDetail.seasons.isNotEmpty) ...[
-                            //   SizedBox(height: 16),
-                            //   Text(
-                            //     'Season',
-                            //     style: kHeading6,
-                            //   ),
-                            //   SizedBox(
-                            //     height: 200,
-                            //     child: ListView.builder(
-                            //       shrinkWrap: true,
-                            //       scrollDirection: Axis.horizontal,
-                            //       itemCount: tvDetail.seasons.length,
-                            //       itemExtent: 120,
-                            //       itemBuilder: (context, index) {
-                            //         final season = tvDetail.seasons[index];
-                            //         return Padding(
-                            //           padding: const EdgeInsets.all(4.0),
-                            //           child: InkWell(
-                            //             onTap: () {
-                            //               // Navigator.of(context).pushNamed(
-                            //               //   TVEpisodeSeasonPage.ROUTE_NAME,
-                            //               //   arguments: {
-                            //               //     'tv': tv,
-                            //               //     'season': season
-                            //               //   },
-                            //               // );
-                            //             },
-                            //             child: ClipRRect(
-                            //               borderRadius:
-                            //                   BorderRadius.circular(8.0),
-                            //               child: CachedNetworkImage(
-                            //                 fit: BoxFit.cover,
-                            //                 imageUrl:
-                            //                     'https://image.tmdb.org/t/p/w500${season.posterPath}',
-                            //                 placeholder: (context, url) =>
-                            //                     Center(
-                            //                   child:
-                            //                       CircularProgressIndicator(),
-                            //                 ),
-                            //                 errorWidget: (context, url, error) {
-                            //                   return Container(
-                            //                     height: double.infinity,
-                            //                     color: kMikadoYellow,
-                            //                     child: Center(
-                            //                       child: FittedBox(
-                            //                         child: Transform.rotate(
-                            //                           angle: 45,
-                            //                           child: Text(
-                            //                             '${season.name}',
-                            //                             style: TextStyle(
-                            //                               fontSize: 16.0,
-                            //                               fontWeight:
-                            //                                   FontWeight.bold,
-                            //                             ),
-                            //                           ),
-                            //                         ),
-                            //                       ),
-                            //                     ),
-                            //                   );
-                            //                 },
-                            //               ),
-                            //             ),
-                            //           ),
-                            //         );
-                            //       },
-                            //     ),
-                            //   ),
-                            // ],
                             SizedBox(height: 16),
                             Text(
                               'Recommendations',
@@ -371,29 +304,6 @@ class DetailContent extends StatelessWidget {
       return '${hours}h ${minutes}m';
     } else {
       return '${minutes}m';
-    }
-  }
-}
-
-class TvSeriesAirDate extends StatelessWidget {
-  const TvSeriesAirDate({
-    Key? key,
-    required this.tvSeries,
-  }) : super(key: key);
-
-  final TvDetail tvSeries;
-
-  @override
-  Widget build(BuildContext context) {
-    if (tvSeries.inProduction) {
-      if (tvSeries.firstAirDate.toString().isNotEmpty) {
-        return Text('${tvSeries.firstAirDate.toString()} - Now');
-      } else {
-        return Text('Unknown Date Production');
-      }
-    } else {
-      return Text(
-          '${tvSeries.firstAirDate.toString()} - ${tvSeries.lastAirDate.toString()}');
     }
   }
 }

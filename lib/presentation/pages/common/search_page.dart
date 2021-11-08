@@ -35,7 +35,7 @@ class SearchPage extends StatelessWidget {
           ),
           SizedBox(height: 16),
           Text(
-            'Movie Result',
+            'Movie Result...',
             style: kHeading6,
           ),
           Consumer<MovieSearchNotifier>(
@@ -62,7 +62,7 @@ class SearchPage extends StatelessWidget {
             },
           ),
           Text(
-            'Tv Series Result',
+            'Tv Series Result...',
             style: kHeading6,
           ),
           Consumer<TvSearchNotifier>(

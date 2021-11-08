@@ -1,3 +1,4 @@
+import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/presentation/pages/common/about_page.dart';
 import 'package:ditonton/presentation/pages/home_movie_page.dart';
 import 'package:ditonton/presentation/pages/common/search_page.dart';
@@ -37,6 +38,9 @@ class _MainPageState extends State<MainPage> {
       return BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
+        selectedItemColor: kMikadoYellow,
+        selectedLabelStyle: kSubtitle,
+        unselectedLabelStyle: kBodyText,
         onTap: (i) => setState(() => _selectedIndex = i),
         items: [
           BottomNavigationBarItem(

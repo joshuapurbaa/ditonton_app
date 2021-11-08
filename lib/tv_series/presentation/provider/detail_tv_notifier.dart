@@ -1,6 +1,7 @@
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/tv_series/domain/entities/tv.dart';
 import 'package:ditonton/tv_series/domain/entities/tv_detail.dart';
+import 'package:ditonton/tv_series/domain/entities/tv_episode.dart';
 import 'package:ditonton/tv_series/domain/usecase/get_detail_tv.dart';
 import 'package:ditonton/tv_series/domain/usecase/get_tv_recommendations.dart';
 import 'package:ditonton/tv_series/domain/usecase/get_watchlist_tv_status.dart';
@@ -37,6 +38,12 @@ class TvDetailNotifier extends ChangeNotifier {
 
   RequestState _recommendationState = RequestState.Empty;
   RequestState get recommendationState => _recommendationState;
+
+  var _tvSeasonEps = <TvEpisode>[];
+  List<TvEpisode> get tvSeasonEps => _tvSeasonEps;
+
+  RequestState _tvSeasonEpsState = RequestState.Empty;
+  RequestState get tvSeasonEpsState => _tvSeasonEpsState;
 
   String _message = '';
   String get message => _message;
@@ -77,25 +84,6 @@ class TvDetailNotifier extends ChangeNotifier {
 
   String _watchlistMessage = '';
   String get watchlistMessage => _watchlistMessage;
-
-  // Future<void> fetchTvDetail(int id) async {
-  //   _tvDetailState = RequestState.Loading;
-  //   notifyListeners();
-
-  //   final result = await getDetailTVs.execute(id);
-  //   result.fold(
-  //     (failure) {
-  //       _tvDetailState = RequestState.Error;
-  //       _message = failure.message;
-  //       notifyListeners();
-  //     },
-  //     (value) {
-  //       _tvDetail = value;
-  //       _tvDetailState = RequestState.Loaded;
-  //       notifyListeners();
-  //     },
-  //   );
-  // }
 
   Future<void> addWatchlist(TvDetail tvSeries) async {
     final result = await saveWatchlistTv.execute(tvSeries);
