@@ -1,8 +1,8 @@
-import 'package:ditonton/presentation/pages/about_page.dart';
+import 'package:ditonton/presentation/pages/common/about_page.dart';
 import 'package:ditonton/presentation/pages/home_movie_page.dart';
-import 'package:ditonton/presentation/pages/search_page.dart';
+import 'package:ditonton/presentation/pages/common/search_page.dart';
 import 'package:ditonton/tv_series/presentation/pages/tv_series_page.dart';
-import 'package:ditonton/presentation/pages/watchlist_page.dart';
+import 'package:ditonton/presentation/pages/common/watchlist_page.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {

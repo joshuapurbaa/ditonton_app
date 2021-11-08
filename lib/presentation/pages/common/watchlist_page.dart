@@ -47,6 +47,7 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
       ),
       body: ListView(
         scrollDirection: Axis.vertical,
+        padding: EdgeInsets.all(8),
         children: [
           Text(
             'Movies',

@@ -39,6 +39,7 @@ import 'package:ditonton/tv_series/domain/usecase/get_tv_airing_today.dart';
 import 'package:ditonton/tv_series/domain/usecase/get_watchlist_tv_status.dart';
 import 'package:ditonton/tv_series/domain/usecase/remove_watchlist_tv.dart';
 import 'package:ditonton/tv_series/domain/usecase/save_watchlist_tv.dart';
+import 'package:ditonton/tv_series/presentation/provider/search_tv_notifier.dart';
 
 import 'package:ditonton/tv_series/presentation/provider/top_rated_tv_notifier.dart';
 import 'package:ditonton/tv_series/presentation/provider/watchlist_tv_notifier.dart';
@@ -128,6 +129,11 @@ void init() {
     ),
   );
 
+  locator.registerFactory(
+    () => TvSearchNotifier(
+      searchTVs: locator(),
+    ),
+  );
   // use case
   locator.registerLazySingleton(() => GetNowPlayingMovies(locator()));
   locator.registerLazySingleton(() => GetPopularMovies(locator()));
