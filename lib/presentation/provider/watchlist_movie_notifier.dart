@@ -22,17 +22,14 @@ class WatchlistMovieNotifier extends ChangeNotifier {
     notifyListeners();
 
     final result = await getWatchlistMovies.execute();
-    result.fold(
-      (failure) {
-        _watchlistState = RequestState.Error;
-        _message = failure.message;
-        notifyListeners();
-      },
-      (moviesData) {
-        _watchlistState = RequestState.Loaded;
-        _watchlistMovies = moviesData;
-        notifyListeners();
-      },
-    );
+    result.fold((failure) {
+      _watchlistState = RequestState.Error;
+      _message = failure.message;
+      notifyListeners();
+    }, (moviesData) {
+      _watchlistState = RequestState.Loaded;
+      _watchlistMovies = moviesData;
+      notifyListeners();
+    });
   }
 }

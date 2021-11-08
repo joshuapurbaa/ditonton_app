@@ -41,6 +41,7 @@ import 'package:ditonton/tv_series/domain/usecase/remove_watchlist_tv.dart';
 import 'package:ditonton/tv_series/domain/usecase/save_watchlist_tv.dart';
 
 import 'package:ditonton/tv_series/presentation/provider/top_rated_tv_notifier.dart';
+import 'package:ditonton/tv_series/presentation/provider/watchlist_tv_notifier.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 
@@ -100,6 +101,12 @@ void init() {
       getTvWatchListStatus: locator(),
       saveWatchlistTv: locator(),
       removeWatchlistTv: locator(),
+    ),
+  );
+
+  locator.registerFactory(
+    () => WatchlistTvNotifier(
+      getWatchListTVs: locator(),
     ),
   );
 
