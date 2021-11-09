@@ -71,7 +71,7 @@ class TVListNotifier extends ChangeNotifier {
   }
 
   Future<void> fetchTopRatedTVs() async {
-    _popularTVsState = RequestState.Loading;
+    _topRatedTVsState = RequestState.Loading;
     notifyListeners();
 
     final result = await getTopRatedTVs.execute();
