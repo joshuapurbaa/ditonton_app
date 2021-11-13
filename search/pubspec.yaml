@@ -1,8 +1,7 @@
 name: search
 description: A new Flutter package project.
 version: 0.0.1
-publish_to: 'none'
-
+publish_to: "none"
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -14,13 +13,15 @@ dependencies:
   core:
     path: ../core
   dartz: ^0.10.0
+  flutter_bloc: ^7.2.0
+  rxdart: ^0.27.1
+  equatable: ^2.0.3
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  # flutter_lints: ^1.0.0
   mockito: ^5.0.8
   build_runner: ^2.0.4
-
+  bloc_test: ^8.0.0
+  test_cov_console: ^0.1.1
 flutter:
-
-  

@@ -1,7 +1,7 @@
 name: ditonton
 description: A new Flutter application.
 
-publish_to: 'none' 
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -14,7 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   http: ^0.13.3
-  provider: ^5.0.0
+  provider: ^6.0.0
   dartz: ^0.10.0-nullsafety.2
   equatable: ^2.0.2
   google_fonts: ^2.1.0
@@ -26,9 +26,9 @@ dependencies:
   data_connection_checker:
     git:
       url: https://github.com/chornthorn/data_connection_checker.git
-      ref: master  
-
-  about: 
+      ref: master
+  flutter_bloc: ^7.2.0
+  about:
     path: about
   core:
     path: core
@@ -41,12 +41,9 @@ dev_dependencies:
     sdk: flutter
   analyzer: ^2.7.0
   test_cov_console: ^0.1.5
-  
-flutter:
 
+flutter:
   uses-material-design: true
 
   assets:
     - assets/
-
-  
