@@ -4,8 +4,7 @@ import 'package:core/styles/text_styles.dart';
 import 'package:core/tv_series/presentation/pages/tv_series_page.dart';
 import 'package:core/utils/routes.dart';
 import 'package:flutter/material.dart';
-
-import '../home_movie_page.dart';
+import 'package:movies/presentation/pages/home_movie_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
