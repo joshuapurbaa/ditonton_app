@@ -14,11 +14,6 @@ import 'package:search/presentation/bloc/search_tv_bloc.dart';
 import 'package:search/search.dart';
 import 'package:core/data/datasources/db/database_helper.dart';
 
-import 'package:core/tv_series/data/datasources/tv_local_data_source.dart';
-import 'package:core/tv_series/data/datasources/tv_remote_data_source.dart';
-import 'package:core/tv_series/data/repositories/tv_repository_impl.dart';
-import 'package:core/tv_series/domain/repositories/tv_repository.dart';
-
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';

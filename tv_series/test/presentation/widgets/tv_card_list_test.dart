@@ -1,4 +1,3 @@
-import 'package:core/tv_series/domain/entities/tv.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -7,7 +6,7 @@ import 'package:mockito/mockito.dart';
 import 'package:provider/provider.dart';
 import 'package:tv_series/tv_series.dart';
 
-import '../../../../core/test/dummy_data/dummy_objects.dart';
+import '../../dummy_data/dummy_objects.dart';
 import 'tv_card_list_test.mocks.dart';
 
 @GenerateMocks([TopRatedTvNotifier])

@@ -5,6 +5,7 @@ import 'package:tv_series/domain/usecases/get_tv_recommendations.dart';
 import 'package:tv_series/domain/usecases/get_watchlist_tv_status.dart';
 import 'package:tv_series/domain/usecases/remove_watchlist_tv.dart';
 import 'package:tv_series/domain/usecases/save_watchlist_tv.dart';
+import 'package:tv_series/tv_series.dart';
 
 class TvDetailNotifier extends ChangeNotifier {
   static const watchlistAddSuccessMessage = 'Added to Watchlist';

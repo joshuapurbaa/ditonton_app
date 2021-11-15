@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import '../../../utils/exception.dart';
+import 'package:core/core.dart';
+
 import '../../data/datasources/tv_local_data_source.dart';
 import '../../data/datasources/tv_remote_data_source.dart';
 import '../../data/models/tv_table_model.dart';
 import '../../domain/entities/tv_episode.dart';
 import '../../domain/entities/tv_detail.dart';
 import '../../domain/entities/tv.dart';
-import '../../../utils/failure.dart';
 import 'package:dartz/dartz.dart';
 import '../../domain/repositories/tv_repository.dart';
 

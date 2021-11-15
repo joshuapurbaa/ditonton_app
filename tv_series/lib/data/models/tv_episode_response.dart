@@ -1,5 +1,5 @@
-import 'package:core/tv_series/data/models/tv_episode_model.dart';
 import 'package:equatable/equatable.dart';
+import 'package:tv_series/data/models/tv_episode_model.dart';
 
 class TvEpisodeResponse extends Equatable {
   TvEpisodeResponse({

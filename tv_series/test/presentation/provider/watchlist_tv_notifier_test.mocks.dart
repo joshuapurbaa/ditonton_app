@@ -2,14 +2,12 @@
 // in tv_series/test/presentation/provider/watchlist_tv_notifier_test.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i5;
+import 'dart:async' as _i4;
 
-import 'package:core/tv_series/domain/entities/tv.dart' as _i7;
-import 'package:core/tv_series/domain/repositories/tv_repository.dart' as _i2;
-import 'package:core/utils/failure.dart' as _i6;
+import 'package:core/utils/failure.dart' as _i5;
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:tv_series/domain/usecases/get_watchlist_tv.dart' as _i4;
+import 'package:tv_series/tv_series.dart' as _i2;
 
 // ignore_for_file: avoid_redundant_argument_values
 // ignore_for_file: avoid_setters_without_getters
@@ -27,7 +25,7 @@ class _FakeEither_1<L, R> extends _i1.Fake implements _i3.Either<L, R> {}
 /// A class which mocks [GetWatchListTVs].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockGetWatchListTVs extends _i1.Mock implements _i4.GetWatchListTVs {
+class MockGetWatchListTVs extends _i1.Mock implements _i2.GetWatchListTVs {
   MockGetWatchListTVs() {
     _i1.throwOnMissingStub(this);
   }
@@ -37,11 +35,11 @@ class MockGetWatchListTVs extends _i1.Mock implements _i4.GetWatchListTVs {
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeTvRepository_0()) as _i2.TvRepository);
   @override
-  _i5.Future<_i3.Either<_i6.Failure, List<_i7.Tv>>> execute() =>
+  _i4.Future<_i3.Either<_i5.Failure, List<_i2.Tv>>> execute() =>
       (super.noSuchMethod(Invocation.method(#execute, []),
-              returnValue: Future<_i3.Either<_i6.Failure, List<_i7.Tv>>>.value(
-                  _FakeEither_1<_i6.Failure, List<_i7.Tv>>()))
-          as _i5.Future<_i3.Either<_i6.Failure, List<_i7.Tv>>>);
+              returnValue: Future<_i3.Either<_i5.Failure, List<_i2.Tv>>>.value(
+                  _FakeEither_1<_i5.Failure, List<_i2.Tv>>()))
+          as _i4.Future<_i3.Either<_i5.Failure, List<_i2.Tv>>>);
   @override
   String toString() => super.toString();
 }

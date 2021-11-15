@@ -2,6 +2,7 @@ import 'package:core/core.dart';
 import 'package:tv_series/domain/usecases/get_top_rated_tv.dart';
 
 import 'package:flutter/foundation.dart';
+import 'package:tv_series/tv_series.dart';
 
 class TopRatedTvNotifier extends ChangeNotifier {
   final GetTopRatedTVs getTopRatedTVs;

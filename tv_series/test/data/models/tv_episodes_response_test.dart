@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:core/tv_series/data/models/tv_episode_model.dart';
-import 'package:core/tv_series/data/models/tv_episode_response.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tv_series/data/models/tv_episode_model.dart';
+import 'package:tv_series/data/models/tv_episode_response.dart';
 
 import '../../json_reader.dart';
 
@@ -28,7 +28,7 @@ void main() {
     test('should return a valid model from JSON', () async {
       // arrange
       final Map<String, dynamic> jsonMap =
-          json.decode(readJson('dummy_data/tv_episode.json'));
+          json.decode(readJsonTv('dummy_data/tv_episode.json'));
       // act
       final result = TvEpisodeResponse.fromJson(jsonMap);
       // assert

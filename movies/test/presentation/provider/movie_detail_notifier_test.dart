@@ -11,7 +11,7 @@ import 'package:movies/domain/usecase/remove_movie_watchlist.dart';
 import 'package:movies/domain/usecase/save_movie_watchlist.dart';
 import 'package:movies/presentation/provider/movie_detail_notifier.dart';
 
-import '../../dummy_data/dummy_objects.dart';
+import '../../dummy_data_movie/dummy_objects.dart';
 import 'movie_detail_notifier_test.mocks.dart';
 
 @GenerateMocks([

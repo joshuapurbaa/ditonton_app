@@ -8,7 +8,7 @@ import 'package:movies/presentation/pages/movie_detail_page.dart';
 import 'package:movies/presentation/provider/movie_detail_notifier.dart';
 import 'package:provider/provider.dart';
 
-import '../../dummy_data/dummy_objects.dart';
+import '../../dummy_data_movie/dummy_objects.dart';
 import 'movie_detail_page_test.mocks.dart';
 
 @GenerateMocks([MovieDetailNotifier])

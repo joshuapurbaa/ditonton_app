@@ -1,5 +1,5 @@
-import 'package:core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:tv_series/tv_series.dart';
 
 class TvSeriesAirDate extends StatelessWidget {
   const TvSeriesAirDate({

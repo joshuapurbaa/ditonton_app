@@ -1,5 +1,5 @@
+import 'package:core/utils/failure.dart';
 import 'package:dartz/dartz.dart';
-import '../../../utils/failure.dart';
 import '../entities/tv_detail.dart';
 import '../entities/tv_episode.dart';
 import '../entities/tv.dart';

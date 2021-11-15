@@ -8,8 +8,7 @@ import 'dart:ui' as _i6;
 import 'package:core/core.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:tv_series/domain/usecases/get_top_rated_tv.dart' as _i2;
-import 'package:tv_series/presentation/provider/top_rated_tv_notifier.dart'
-    as _i3;
+import 'package:tv_series/tv_series.dart' as _i3;
 
 // ignore_for_file: avoid_redundant_argument_values
 // ignore_for_file: avoid_setters_without_getters
@@ -39,9 +38,9 @@ class MockTopRatedTvNotifier extends _i1.Mock
   _i4.RequestState get state => (super.noSuchMethod(Invocation.getter(#state),
       returnValue: _i4.RequestState.Empty) as _i4.RequestState);
   @override
-  List<_i4.Tv> get tvTopRated => (super
-          .noSuchMethod(Invocation.getter(#tvTopRated), returnValue: <_i4.Tv>[])
-      as List<_i4.Tv>);
+  List<_i3.Tv> get tvTopRated => (super
+          .noSuchMethod(Invocation.getter(#tvTopRated), returnValue: <_i3.Tv>[])
+      as List<_i3.Tv>);
   @override
   String get message =>
       (super.noSuchMethod(Invocation.getter(#message), returnValue: '')

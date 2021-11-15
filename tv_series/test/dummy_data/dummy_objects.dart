@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:tv_series/tv_series.dart';
 
 final testTv = Tv(
   posterPath: '/zra8NrzxaEeunRWJmUm3HZOL4sd.jpg',
@@ -205,4 +206,25 @@ final testWatchlistTvSeries = Tv.watchlist(
   overview: 'overview',
   posterPath: 'posterPath',
   name: 'name',
+);
+
+final testTvTable = TvTable(
+  id: 1,
+  name: 'name',
+  posterPath: 'posterPath',
+  overview: 'overview',
+);
+
+final testTvMap = {
+  'id': 1,
+  'overview': 'overview',
+  'posterPath': 'posterPath',
+  'name': 'name',
+};
+
+final testWatchlistTv = Tv.watchlist(
+  id: 1,
+  name: 'name',
+  posterPath: 'posterPath',
+  overview: 'overview',
 );

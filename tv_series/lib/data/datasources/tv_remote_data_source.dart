@@ -1,10 +1,11 @@
 import 'dart:convert';
 
+import 'package:tv_series/data/models/tv_detail_model.dart';
+import 'package:tv_series/data/models/tv_episode_model.dart';
+import 'package:tv_series/data/models/tv_model.dart';
+
 import '../models/tv_response.dart';
 import '../models/tv_episode_response.dart';
-import 'package:core/tv_series/data/models/tv_detail_model.dart';
-import 'package:core/tv_series/data/models/tv_episode_model.dart';
-import 'package:core/tv_series/data/models/tv_model.dart';
 import 'package:core/utils/exception.dart';
 import 'package:http/http.dart' as http;
 

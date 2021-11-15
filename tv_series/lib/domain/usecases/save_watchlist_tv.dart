@@ -1,7 +1,6 @@
-import 'package:core/tv_series/domain/entities/tv_detail.dart';
-import 'package:core/tv_series/domain/repositories/tv_repository.dart';
 import 'package:core/utils/failure.dart';
 import 'package:dartz/dartz.dart';
+import 'package:tv_series/tv_series.dart';
 
 class SaveWatchlistTv {
   final TvRepository repository;

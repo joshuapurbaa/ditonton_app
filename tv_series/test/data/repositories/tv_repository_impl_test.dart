@@ -1,26 +1,16 @@
 import 'dart:io';
 
 import 'package:core/data/models/genre_model.dart';
-import 'package:core/tv_series/data/models/tv_createdby_model.dart';
-import 'package:core/tv_series/data/models/tv_detail_model.dart';
-import 'package:core/tv_series/data/models/tv_episode_model.dart';
-import 'package:core/tv_series/data/models/tv_last_episode_model.dart';
-import 'package:core/tv_series/data/models/tv_model.dart';
-import 'package:core/tv_series/data/models/tv_network_model.dart';
-import 'package:core/tv_series/data/models/tv_production_country_model.dart';
-import 'package:core/tv_series/data/models/tv_season_model.dart';
-import 'package:core/tv_series/data/models/tv_spoken_language_model.dart';
-import 'package:core/tv_series/data/repositories/tv_repository_impl.dart';
-import 'package:core/tv_series/domain/entities/tv.dart';
 import 'package:core/utils/exception.dart';
 import 'package:core/utils/failure.dart';
 import 'package:dartz/dartz.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:tv_series/tv_series.dart';
 
 import '../../dummy_data/dummy_objects.dart';
-import '../../helpers/test_helper.mocks.dart';
+import '../../helpers/test_helpers.mocks.dart';
 
 void main() {
   late TvRepositoryImpl repository;

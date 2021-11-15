@@ -1,5 +1,5 @@
-import 'package:core/tv_series/domain/entities/tv_create_by.dart';
 import 'package:equatable/equatable.dart';
+import 'package:tv_series/domain/entities/tv_create_by.dart';
 
 class CreatedByModel extends Equatable {
   CreatedByModel({

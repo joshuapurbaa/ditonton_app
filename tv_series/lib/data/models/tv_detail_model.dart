@@ -1,6 +1,7 @@
+import 'package:core/data/models/genre_model.dart';
+
 import '../../domain/entities/tv_detail.dart';
 import 'package:equatable/equatable.dart';
-import '../../../data/models/genre_model.dart';
 import '../../data/models/tv_createdby_model.dart';
 import '../../data/models/tv_last_episode_model.dart';
 import '../../data/models/tv_network_model.dart';
