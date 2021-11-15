@@ -14,6 +14,8 @@ dependencies:
     path: ../core
   movies: 
     path: ../movies
+  tv_series: 
+    path: ../tv_series
   dartz: ^0.10.0
   flutter_bloc: ^7.2.0
   rxdart: ^0.27.1

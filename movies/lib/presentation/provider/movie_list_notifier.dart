@@ -1,6 +1,6 @@
 import 'package:core/core.dart';
-import 'package:core/domain/entities/movie.dart';
 import 'package:flutter/material.dart';
+import 'package:movies/domain/entities/movie.dart';
 import 'package:movies/domain/usecase/get_now_playing_movies.dart';
 import 'package:movies/domain/usecase/get_popular_movies.dart';
 import 'package:movies/domain/usecase/get_top_rated_movies.dart';

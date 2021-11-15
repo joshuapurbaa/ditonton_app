@@ -1,21 +1,14 @@
 import 'package:about/about_page.dart';
 import 'package:core/core.dart';
-import 'package:core/presentation/pages/common/main_page.dart';
-import 'package:core/presentation/pages/common/watchlist_page.dart';
-import 'package:core/presentation/provider/watchlist_movie_notifier.dart';
-import 'package:core/tv_series/presentation/pages/detail_tv_page.dart';
-import 'package:core/tv_series/presentation/pages/popular_tv_series_page.dart';
-import 'package:core/tv_series/presentation/pages/top_rated_tv_page.dart';
-import 'package:core/tv_series/presentation/provider/detail_tv_notifier.dart';
-import 'package:core/tv_series/presentation/provider/list_tv_notifier.dart';
-import 'package:core/tv_series/presentation/provider/popular_tv_notifier.dart';
-import 'package:core/tv_series/presentation/provider/top_rated_tv_notifier.dart';
-import 'package:core/tv_series/presentation/provider/watchlist_tv_notifier.dart';
+import 'package:core/presentation/main_page.dart';
+import 'package:core/presentation/watchlist_page.dart';
+
 import 'package:core/utils/utils.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/movies.dart';
 import 'package:movies/presentation/pages/home_movie_page.dart';
 import 'package:movies/presentation/pages/movie_detail_page.dart';
 import 'package:movies/presentation/pages/popular_movies_page.dart';
@@ -29,6 +22,7 @@ import 'package:ditonton/injection.dart' as di;
 import 'package:search/presentation/bloc/search_movie_bloc.dart';
 import 'package:search/presentation/bloc/search_tv_bloc.dart';
 import 'package:search/search.dart';
+import 'package:tv_series/tv_series.dart';
 
 void main() {
   di.init();

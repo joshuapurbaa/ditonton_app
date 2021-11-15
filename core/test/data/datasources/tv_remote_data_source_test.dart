@@ -11,7 +11,7 @@ import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
 
 import '../../helpers/test_helper.mocks.dart';
-import '../../json_reader.dart';
+import '../../../../movies/test/json_reader.dart';
 
 void main() {
   const API_KEY = 'api_key=12a499afc0d6729089cbe35478df9371';

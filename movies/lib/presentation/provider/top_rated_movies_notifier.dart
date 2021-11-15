@@ -1,5 +1,5 @@
 import 'package:core/core.dart';
-import 'package:core/domain/entities/movie.dart';
+import 'package:movies/domain/entities/movie.dart';
 import 'package:movies/domain/usecase/get_top_rated_movies.dart';
 
 import 'package:flutter/foundation.dart';

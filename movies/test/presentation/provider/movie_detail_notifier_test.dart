@@ -1,14 +1,14 @@
 import 'package:core/core.dart';
-import 'package:core/domain/entities/movie.dart';
-import 'package:core/domain/usecases/get_watchlist_status.dart';
-import 'package:core/domain/usecases/remove_watchlist.dart';
-import 'package:core/domain/usecases/save_watchlist.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:movies/domain/entities/movie.dart';
 import 'package:movies/domain/usecase/get_movie_detail.dart';
 import 'package:movies/domain/usecase/get_movie_recommendations.dart';
+import 'package:movies/domain/usecase/get_movie_watchlist_status.dart';
+import 'package:movies/domain/usecase/remove_movie_watchlist.dart';
+import 'package:movies/domain/usecase/save_movie_watchlist.dart';
 import 'package:movies/presentation/provider/movie_detail_notifier.dart';
 
 import '../../dummy_data/dummy_objects.dart';

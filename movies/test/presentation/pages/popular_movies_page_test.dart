@@ -1,9 +1,9 @@
-import 'package:core/domain/entities/movie.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:movies/domain/entities/movie.dart';
 import 'package:movies/presentation/pages/popular_movies_page.dart';
 import 'package:movies/presentation/provider/popular_movies_notifier.dart';
 import 'package:provider/provider.dart';

@@ -1,9 +1,9 @@
 import 'dart:async';
 
+import 'package:movies/data/models/movie_table.dart';
+
 import '../../../tv_series/data/models/tv_table_model.dart';
 import 'package:sqflite/sqflite.dart';
-
-import '../../models/movie_table.dart';
 
 class DatabaseHelper {
   static DatabaseHelper? _databaseHelper;
@@ -35,8 +35,7 @@ class DatabaseHelper {
   }
 
   void _onCreate(Database db, int version) async {
-    await db.execute(
-        '''
+    await db.execute('''
       CREATE TABLE  $_tblWatchlist (
         id INTEGER PRIMARY KEY,
         title TEXT,
@@ -44,8 +43,7 @@ class DatabaseHelper {
         posterPath TEXT
       );
     ''');
-    await db.execute(
-        '''
+    await db.execute('''
       CREATE TABLE  $_tblCache (
         id INTEGER PRIMARY KEY,
         title TEXT,
@@ -54,8 +52,7 @@ class DatabaseHelper {
         category TEXT
       );
     ''');
-    await db.execute(
-        '''
+    await db.execute('''
       CREATE TABLE  $_tblWatchlistTv (
         id INTEGER PRIMARY KEY,
         name TEXT,
