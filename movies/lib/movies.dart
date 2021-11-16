@@ -10,3 +10,5 @@ export 'data/repository/movie_repository_impl.dart';
 export 'data/datasource/movie_local_data_source.dart';
 export 'data/datasource/movie_remote_data_source.dart';
 export 'domain/entities/movie.dart';
+export 'domain/usecase/get_movie_recommendations.dart';
+export 'domain/usecase/get_movie_detail.dart';
