@@ -15,12 +15,15 @@ import 'package:search/presentation/bloc/search_tv_bloc.dart';
 import 'package:search/search.dart';
 import 'package:core/data/datasources/db/database_helper.dart';
 
+import 'package:core/presentation/watchlist_bloc/watchlist_movie_bloc.dart';
 import 'package:movies/presentation/bloc/movie_home_bloc/movie_home_bloc.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 import 'package:tv_series/presentation/bloc/tv_home_bloc/tv_home_bloc.dart';
 import 'package:tv_series/tv_series.dart';
+import 'package:tv_series/presentation/bloc/popular_tv_bloc/popular_tv_bloc.dart';
+import 'package:tv_series/presentation/bloc/top_rated_tv_bloc/top_rated_tv_bloc.dart';
 
 final locator = GetIt.instance;
 
@@ -101,15 +104,16 @@ void init() {
       locator(),
     ),
   );
-
-// TV Series
-  // locator.registerFactory(
-  //   () => TVListNotifier(
-  //     getTvAiringToday: locator(),
-  //     getPopularTVs: locator(),
-  //     getTopRatedTVs: locator(),
-  //   ),
-  // );
+  locator.registerFactory(
+    () => PopularTvBloc(
+      locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => TopRatedTvBloc(
+      locator(),
+    ),
+  );
 
   locator.registerFactory(
     () => TvDetailNotifier(
@@ -124,18 +128,6 @@ void init() {
   locator.registerFactory(
     () => WatchlistTvNotifier(
       getWatchListTVs: locator(),
-    ),
-  );
-
-  locator.registerFactory(
-    () => TopRatedTvNotifier(
-      getTopRatedTVs: locator(),
-    ),
-  );
-
-  locator.registerFactory(
-    () => PopularTvNotifier(
-      getPopularTVs: locator(),
     ),
   );
 

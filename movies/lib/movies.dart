@@ -11,4 +11,3 @@ export 'data/datasource/movie_remote_data_source.dart';
 export 'domain/entities/movie.dart';
 export 'domain/usecase/get_movie_recommendations.dart';
 export 'domain/usecase/get_movie_detail.dart';
-export 'presentation/bloc/watchlist_bloc/watchlist_movie_bloc.dart';

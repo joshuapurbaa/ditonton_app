@@ -8,7 +8,6 @@ import 'package:core/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies/movies.dart';
 import 'package:movies/presentation/bloc/movie_detail_bloc/movie_detail_bloc.dart';
 import 'package:movies/presentation/bloc/movie_detail_bloc/movie_recommendations_bloc.dart';
 import 'package:movies/presentation/bloc/movie_detail_bloc/movie_watchlist_detail_bloc.dart';
@@ -26,7 +25,10 @@ import 'package:search/presentation/bloc/search_movie_bloc.dart';
 import 'package:search/presentation/bloc/search_tv_bloc.dart';
 import 'package:search/search.dart';
 import 'package:tv_series/presentation/bloc/tv_home_bloc/tv_home_bloc.dart';
+import 'package:tv_series/presentation/bloc/popular_tv_bloc/popular_tv_bloc.dart';
+import 'package:tv_series/presentation/bloc/top_rated_tv_bloc/top_rated_tv_bloc.dart';
 import 'package:tv_series/tv_series.dart';
+import 'package:core/presentation/watchlist_bloc/watchlist_movie_bloc.dart';
 
 void main() {
   di.init();
@@ -82,16 +84,17 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<TopRatedTvHomeBloc>(),
         ),
+        BlocProvider(
+          create: (_) => di.locator<PopularTvBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<TopRatedTvBloc>(),
+        ),
 
         ChangeNotifierProvider(
           create: (_) => di.locator<TvDetailNotifier>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<PopularTvNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TopRatedTvNotifier>(),
-        ),
+
         ChangeNotifierProvider(
           create: (_) => di.locator<WatchlistTvNotifier>(),
         ),
