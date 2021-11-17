@@ -19,6 +19,7 @@ import 'package:movies/presentation/bloc/movie_home_bloc/movie_home_bloc.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
+import 'package:tv_series/presentation/bloc/tv_home_bloc/tv_home_bloc.dart';
 import 'package:tv_series/tv_series.dart';
 
 final locator = GetIt.instance;
@@ -85,15 +86,30 @@ void init() {
       locator(),
     ),
   );
-
-// TV Series
   locator.registerFactory(
-    () => TVListNotifier(
-      getTvAiringToday: locator(),
-      getPopularTVs: locator(),
-      getTopRatedTVs: locator(),
+    () => AiringTodayTvHomeBloc(
+      locator(),
     ),
   );
+  locator.registerFactory(
+    () => PopularTvHomeBloc(
+      locator(),
+    ),
+  );
+  locator.registerFactory(
+    () => TopRatedTvHomeBloc(
+      locator(),
+    ),
+  );
+
+// TV Series
+  // locator.registerFactory(
+  //   () => TVListNotifier(
+  //     getTvAiringToday: locator(),
+  //     getPopularTVs: locator(),
+  //     getTopRatedTVs: locator(),
+  //   ),
+  // );
 
   locator.registerFactory(
     () => TvDetailNotifier(

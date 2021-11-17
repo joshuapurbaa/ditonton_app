@@ -1,8 +1,8 @@
 import 'package:core/core.dart';
+import 'package:core/utils/routes.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tv_series/presentation/bloc/tv_home_bloc/tv_home_bloc.dart';
 
-import '../../presentation/pages/popular_tv_series_page.dart';
-import '../../presentation/pages/top_rated_tv_page.dart';
-import '../../presentation/provider/list_tv_notifier.dart';
 import '../../presentation/widgets/tv_series_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,10 +18,21 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() => Provider.of<TVListNotifier>(context, listen: false)
-      ..fetchAiringTodayTVs()
-      ..fetchPopularTVs()
-      ..fetchTopRatedTVs());
+    Future.microtask(
+      () => context.read<AiringTodayTvHomeBloc>().add(
+            FetchTvListHome(),
+          ),
+    );
+    Future.microtask(
+      () => context.read<PopularTvHomeBloc>().add(
+            FetchTvListHome(),
+          ),
+    );
+    Future.microtask(
+      () => context.read<TopRatedTvHomeBloc>().add(
+            FetchTvListHome(),
+          ),
+    );
   }
 
   @override
@@ -34,15 +45,14 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
             'Airing Today',
             style: kHeading6,
           ),
-          Consumer<TVListNotifier>(
-            builder: (context, data, child) {
-              final state = data.airingTodayTVsState;
-              if (state == RequestState.Loading) {
+          BlocBuilder<AiringTodayTvHomeBloc, TvHomeState>(
+            builder: (context, state) {
+              if (state is TvHomeLoading) {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
-              } else if (state == RequestState.Loaded) {
-                return TvSeriesList(data.airingTodayTVs);
+              } else if (state is TvHomeHasData) {
+                return TvSeriesList(state.tv);
               } else {
                 return Text('Failed');
               }
@@ -51,18 +61,17 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
           _buildSubHeading(
             title: 'Popular',
             onTap: () {
-              Navigator.pushNamed(context, PopularTvPage.ROUTE_NAME);
+              Navigator.pushNamed(context, POPULAR_TV_ROUTE);
             },
           ),
-          Consumer<TVListNotifier>(
-            builder: (context, data, child) {
-              final state = data.popularTVsState;
-              if (state == RequestState.Loading) {
+          BlocBuilder<PopularTvHomeBloc, TvHomeState>(
+            builder: (context, state) {
+              if (state is TvHomeLoading) {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
-              } else if (state == RequestState.Loaded) {
-                return TvSeriesList(data.popularTVs);
+              } else if (state is TvHomeHasData) {
+                return TvSeriesList(state.tv);
               } else {
                 return Text('Failed');
               }
@@ -71,21 +80,22 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
           _buildSubHeading(
             title: 'Top Rated',
             onTap: () {
-              Navigator.pushNamed(context, TopRatedTvPage.ROUTE_NAME);
+              Navigator.pushNamed(context, TOP_RATED_TV_ROUTE);
             },
           ),
-          Consumer<TVListNotifier>(builder: (context, data, child) {
-            final state = data.topRatedTVsState;
-            if (state == RequestState.Loading) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (state == RequestState.Loaded) {
-              return TvSeriesList(data.topRatedTVs);
-            } else {
-              return Text('Failed');
-            }
-          }),
+          BlocBuilder<TopRatedTvHomeBloc, TvHomeState>(
+            builder: (context, state) {
+              if (state is TvHomeLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is TvHomeHasData) {
+                return TvSeriesList(state.tv);
+              } else {
+                return Text('Failed');
+              }
+            },
+          ),
         ],
       ),
     );
@@ -104,7 +114,10 @@ class _TvSeriesPageState extends State<TvSeriesPage> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              children: [Text('See More'), Icon(Icons.arrow_forward_ios)],
+              children: [
+                Text('See More'),
+                Icon(Icons.arrow_forward_ios),
+              ],
             ),
           ),
         ),

@@ -25,6 +25,7 @@ import 'package:ditonton/injection.dart' as di;
 import 'package:search/presentation/bloc/search_movie_bloc.dart';
 import 'package:search/presentation/bloc/search_tv_bloc.dart';
 import 'package:search/search.dart';
+import 'package:tv_series/presentation/bloc/tv_home_bloc/tv_home_bloc.dart';
 import 'package:tv_series/tv_series.dart';
 
 void main() {
@@ -72,11 +73,16 @@ class MyApp extends StatelessWidget {
           create: (_) => di.locator<WatchlistMovieBloc>(),
         ),
 
-        // PROVIDER
-
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TVListNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<AiringTodayTvHomeBloc>(),
         ),
+        BlocProvider(
+          create: (_) => di.locator<PopularTvHomeBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<TopRatedTvHomeBloc>(),
+        ),
+
         ChangeNotifierProvider(
           create: (_) => di.locator<TvDetailNotifier>(),
         ),
