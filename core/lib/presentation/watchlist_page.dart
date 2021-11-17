@@ -1,9 +1,12 @@
-import 'package:movies/presentation/provider/watchlist_movie_notifier.dart';
+import 'package:core/presentation/main_page.dart';
+import 'package:core/styles/colors.dart';
 import 'package:core/styles/text_styles.dart';
 
 import 'package:core/utils/state_enum.dart';
 import 'package:core/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/movies.dart';
 import 'package:movies/presentation/widgets/movie_card_list.dart';
 import 'package:provider/provider.dart';
 import 'package:tv_series/tv_series.dart';
@@ -20,8 +23,8 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
   void initState() {
     super.initState();
     Future.microtask(() {
-      Provider.of<WatchlistMovieNotifier>(context, listen: false)
-          .fetchWatchlistMovies();
+      Future.microtask(() =>
+          context.read<WatchlistMovieBloc>().add(GetWatchListMovieData()));
       Provider.of<WatchlistTvNotifier>(context, listen: false)
           .fetchWatchlistTv();
     });
@@ -34,8 +37,7 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
   }
 
   void didPopNext() {
-    Provider.of<WatchlistMovieNotifier>(context, listen: false)
-        .fetchWatchlistMovies();
+    context.read<WatchlistMovieBloc>().add(GetWatchListMovieData());
     Provider.of<WatchlistTvNotifier>(context, listen: false).fetchWatchlistTv();
   }
 
@@ -47,39 +49,89 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
       ),
       body: ListView(
         scrollDirection: Axis.vertical,
-        padding: EdgeInsets.all(8),
         children: [
-          Text(
-            'Movies',
-            style: kHeading6,
+          Container(
+            padding: EdgeInsets.all(15),
+            decoration: BoxDecoration(color: kOxfordBlue),
+            child: Text(
+              'Movies',
+              style: kHeading6,
+            ),
           ),
           SizedBox(
             height: 10,
           ),
-          Consumer<WatchlistMovieNotifier>(
-            builder: (context, data, child) {
-              if (data.watchlistState == RequestState.Loading) {
+          BlocBuilder<WatchlistMovieBloc, WatchlistMovieState>(
+            builder: (context, state) {
+              if (state is WatchlistLoading) {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
-              } else if (data.watchlistState == RequestState.Loaded) {
-                return ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    final movie = data.watchlistMovies[index];
-                    return MovieCard(movie);
-                  },
-                  itemCount: data.watchlistMovies.length,
+              } else if (state is WatchlistHasData) {
+                return state.result.length < 1
+                    ? Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (_) => MainPage()));
+                          },
+                          child: Text(
+                            'Masih kosong...\n Cari Movies...',
+                            style: kSubtitle,
+                          ),
+                          style: TextButton.styleFrom(
+                            backgroundColor: kOxfordBlue,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      )
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          final movie = state.result[index];
+                          return MovieCard(movie);
+                        },
+                        itemCount: state.result.length,
+                      );
+              } else if (state is WatchlistError) {
+                return Center(
+                  child: Text(state.message),
                 );
               } else {
                 return Center(
-                  key: Key('error_message'),
-                  child: Text(data.message),
+                  child: Text('Empty Data'),
                 );
               }
             },
           ),
+          // Consumer<WatchlistMovieNotifier>(
+          //   builder: (context, data, child) {
+          //     if (data.watchlistState == RequestState.Loading) {
+          //       return Center(
+          //         child: CircularProgressIndicator(),
+          //       );
+          //     } else if (data.watchlistState == RequestState.Loaded) {
+          //       return ListView.builder(
+          //         shrinkWrap: true,
+          //         physics: NeverScrollableScrollPhysics(),
+          //         itemBuilder: (context, index) {
+          //           final movie = data.watchlistMovies[index];
+          //           return MovieCard(movie);
+          //         },
+          //         itemCount: data.watchlistMovies.length,
+          //       );
+          //     } else {
+          //       return Center(
+          //         key: Key('error_message'),
+          //         child: Text(data.message),
+          //       );
+          //     }
+          //   },
+          // ),
           Text(
             'Tv Series',
             style: kHeading6,
