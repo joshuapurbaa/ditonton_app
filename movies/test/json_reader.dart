@@ -1,9 +1,20 @@
 import 'dart:io';
 
+// String readJsonMovie(String name) {
+//   var dir = Directory.current.path;
+//   if (dir.endsWith('/test')) {
+//     dir = dir.replaceAll('/test', '');
+//   }
+//   return File('$dir/test/$name').readAsStringSync();
+// }
+
 String readJsonMovie(String name) {
   var dir = Directory.current.path;
   if (dir.endsWith('/test')) {
     dir = dir.replaceAll('/test', '');
   }
-  return File('$dir/test/$name').readAsStringSync();
+  if (dir.endsWith('movies')) {
+    return File('$dir/test/$name').readAsStringSync();
+  }
+  return File('$dir/movies/test/$name').readAsStringSync();
 }

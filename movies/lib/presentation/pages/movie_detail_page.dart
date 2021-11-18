@@ -138,40 +138,42 @@ class DetailContent extends StatelessWidget {
                                 style: kHeading5,
                               ),
                               BlocBuilder<MovieWatchlistDetailBloc,
-                                      MovieWatchlistDetailState>(
-                                  buildWhen: (prev, cur) {
-                                if (cur is ErrorStatus) {
-                                  return false;
-                                }
-                                return true;
-                              }, builder: (context, state) {
-                                if (state is ReceivedStatus) {
-                                  return ElevatedButton(
-                                    onPressed: () async {
-                                      if (!state.status) {
-                                        context
-                                            .read<MovieWatchlistDetailBloc>()
-                                            .add(AddWatchlist(movie));
-                                      } else {
-                                        context
-                                            .read<MovieWatchlistDetailBloc>()
-                                            .add(RemoveFromWatchlist(movie));
-                                      }
-                                    },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        (state.status)
-                                            ? Icon(Icons.check)
-                                            : Icon(Icons.add),
-                                        Text('Watchlist'),
-                                      ],
-                                    ),
-                                  );
-                                } else {
-                                  return CircularProgressIndicator();
-                                }
-                              }),
+                                  MovieWatchlistDetailState>(
+                                buildWhen: (prev, cur) {
+                                  if (cur is ErrorStatus) {
+                                    return false;
+                                  }
+                                  return true;
+                                },
+                                builder: (context, state) {
+                                  if (state is ReceivedStatus) {
+                                    return ElevatedButton(
+                                      onPressed: () async {
+                                        if (!state.status) {
+                                          context
+                                              .read<MovieWatchlistDetailBloc>()
+                                              .add(AddWatchlist(movie));
+                                        } else {
+                                          context
+                                              .read<MovieWatchlistDetailBloc>()
+                                              .add(RemoveFromWatchlist(movie));
+                                        }
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          (state.status)
+                                              ? Icon(Icons.check)
+                                              : Icon(Icons.add),
+                                          Text('Watchlist'),
+                                        ],
+                                      ),
+                                    );
+                                  } else {
+                                    return CircularProgressIndicator();
+                                  }
+                                },
+                              ),
                               Text(
                                 _showGenres(movie.genres),
                               ),

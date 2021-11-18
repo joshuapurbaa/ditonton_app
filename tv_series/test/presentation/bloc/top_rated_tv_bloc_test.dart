@@ -9,7 +9,7 @@ import 'package:tv_series/domain/usecases/get_top_rated_tv.dart';
 import 'package:tv_series/presentation/bloc/top_rated_tv_bloc/top_rated_tv_bloc.dart';
 
 import '../../dummy_data/dummy_objects.dart';
-import 'tv_home_bloc/top_rated_tv_home_bloc_test.mocks.dart';
+import 'top_rated_tv_bloc_test.mocks.dart';
 
 @GenerateMocks([GetTopRatedTVs])
 void main() {

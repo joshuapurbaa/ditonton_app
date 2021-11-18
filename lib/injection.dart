@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:core/presentation/watchlist_bloc/watchlist_tv_bloc.dart';
 import 'package:movies/domain/usecase/get_movie_detail.dart';
 import 'package:movies/domain/usecase/get_movie_recommendations.dart';
 import 'package:movies/domain/usecase/get_now_playing_movies.dart';
@@ -20,6 +21,9 @@ import 'package:movies/presentation/bloc/movie_home_bloc/movie_home_bloc.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
+import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_detail_bloc.dart';
+import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_recommendations_bloc.dart';
+import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_watchlist_bloc.dart';
 import 'package:tv_series/presentation/bloc/tv_home_bloc/tv_home_bloc.dart';
 import 'package:tv_series/tv_series.dart';
 import 'package:tv_series/presentation/bloc/popular_tv_bloc/popular_tv_bloc.dart';
@@ -66,16 +70,19 @@ void init() {
       locator(),
     ),
   );
+
   locator.registerFactory(
     () => MovieDetailBloc(
       locator(),
     ),
   );
+
   locator.registerFactory(
     () => MovieRecommendationsBloc(
       locator(),
     ),
   );
+
   locator.registerFactory(
     () => MovieWatchlistDetailBloc(
       locator(),
@@ -89,26 +96,31 @@ void init() {
       locator(),
     ),
   );
+
   locator.registerFactory(
     () => AiringTodayTvHomeBloc(
       locator(),
     ),
   );
+
   locator.registerFactory(
     () => PopularTvHomeBloc(
       locator(),
     ),
   );
+
   locator.registerFactory(
     () => TopRatedTvHomeBloc(
       locator(),
     ),
   );
+
   locator.registerFactory(
     () => PopularTvBloc(
       locator(),
     ),
   );
+
   locator.registerFactory(
     () => TopRatedTvBloc(
       locator(),
@@ -116,18 +128,28 @@ void init() {
   );
 
   locator.registerFactory(
-    () => TvDetailNotifier(
-      getDetailTVs: locator(),
-      getTvRecommendations: locator(),
-      getTvWatchListStatus: locator(),
-      saveWatchlistTv: locator(),
-      removeWatchlistTv: locator(),
+    () => TvDetailBloc(
+      locator(),
     ),
   );
 
   locator.registerFactory(
-    () => WatchlistTvNotifier(
-      getWatchListTVs: locator(),
+    () => TvRecommendationsBloc(
+      locator(),
+    ),
+  );
+
+  locator.registerFactory(
+    () => TvDetailWatchlistBloc(
+      locator(),
+      locator(),
+      locator(),
+    ),
+  );
+
+  locator.registerFactory(
+    () => WatchlistTvBloc(
+      locator(),
     ),
   );
 

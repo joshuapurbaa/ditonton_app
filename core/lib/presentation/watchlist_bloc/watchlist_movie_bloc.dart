@@ -9,17 +9,17 @@ part 'watchlist_movie_state.dart';
 class WatchlistMovieBloc
     extends Bloc<WatchlistMovieEvent, WatchlistMovieState> {
   final GetWatchlistMovies getWatchlistMovies;
-  WatchlistMovieBloc(this.getWatchlistMovies) : super(WatchlistEmpty()) {
+  WatchlistMovieBloc(this.getWatchlistMovies) : super(WatchlistMovieEmpty()) {
     on<WatchlistMovieEvent>((event, emit) async {
-      emit(WatchlistLoading());
+      emit(WatchlistMovieLoading());
 
       final result = await getWatchlistMovies.execute();
       result.fold(
         (failure) => emit(
-          WatchlistError(failure.message),
+          WatchlistMovieError(failure.message),
         ),
         (data) => emit(
-          WatchlistHasData(data),
+          WatchlistMovieHasData(data),
         ),
       );
     });

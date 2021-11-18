@@ -1,6 +1,7 @@
 import 'package:about/about_page.dart';
 import 'package:core/core.dart';
 import 'package:core/presentation/main_page.dart';
+import 'package:core/presentation/watchlist_bloc/watchlist_tv_bloc.dart';
 import 'package:core/presentation/watchlist_page.dart';
 
 import 'package:core/utils/utils.dart';
@@ -24,6 +25,9 @@ import 'package:ditonton/injection.dart' as di;
 import 'package:search/presentation/bloc/search_movie_bloc.dart';
 import 'package:search/presentation/bloc/search_tv_bloc.dart';
 import 'package:search/search.dart';
+import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_detail_bloc.dart';
+import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_recommendations_bloc.dart';
+import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_watchlist_bloc.dart';
 import 'package:tv_series/presentation/bloc/tv_home_bloc/tv_home_bloc.dart';
 import 'package:tv_series/presentation/bloc/popular_tv_bloc/popular_tv_bloc.dart';
 import 'package:tv_series/presentation/bloc/top_rated_tv_bloc/top_rated_tv_bloc.dart';
@@ -90,13 +94,17 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<TopRatedTvBloc>(),
         ),
-
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvDetailNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<TvDetailBloc>(),
         ),
-
-        ChangeNotifierProvider(
-          create: (_) => di.locator<WatchlistTvNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<TvRecommendationsBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<TvDetailWatchlistBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<WatchlistTvBloc>(),
         ),
       ],
       child: MaterialApp(
