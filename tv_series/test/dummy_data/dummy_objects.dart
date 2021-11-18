@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:flutter/material.dart';
 import 'package:tv_series/tv_series.dart';
 
 final testTv = Tv(
@@ -228,3 +229,33 @@ final testWatchlistTv = Tv.watchlist(
   posterPath: 'posterPath',
   overview: 'overview',
 );
+
+class FakeHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: ListTile(
+      key: Key('fake_tile'),
+      onTap: () {
+        Navigator.pushNamed(context, '/second');
+      },
+      title: Text('This is Fake'),
+      leading: Icon(Icons.check),
+    ));
+  }
+}
+
+class FakeTargetPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: ListTile(
+      key: Key('fake_second_tile'),
+      onTap: () {
+        Navigator.pop(context);
+      },
+      title: Text('This is Fake'),
+      leading: Icon(Icons.check),
+    ));
+  }
+}

@@ -56,9 +56,12 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
               ),
             );
           } else if (state is MovieDetailError) {
-            return Text(state.message);
+            return Text(
+              state.message,
+              key: Key('error_message'),
+            );
           } else {
-            return Text('Failed');
+            return Text('Empty');
           }
         },
       ),
@@ -148,6 +151,7 @@ class DetailContent extends StatelessWidget {
                                 builder: (context, state) {
                                   if (state is ReceivedStatus) {
                                     return ElevatedButton(
+                                      key: Key('btn_watchlist'),
                                       onPressed: () async {
                                         if (!state.status) {
                                           context
@@ -212,11 +216,17 @@ class DetailContent extends StatelessWidget {
                                 builder: (context, state) {
                                   if (state is MovieRecommendationLoading) {
                                     return Center(
-                                      child: CircularProgressIndicator(),
+                                      key: Key('recommendation_center'),
+                                      child: CircularProgressIndicator(
+                                        key: Key('recommendation_loading'),
+                                      ),
                                     );
                                   } else if (state
                                       is MovieRecommendationError) {
-                                    return Text(state.message);
+                                    return Text(
+                                      state.message,
+                                      key: Key('recom_error_message'),
+                                    );
                                   } else if (state
                                       is MovieRecommendationHasData) {
                                     return Container(
@@ -292,6 +302,7 @@ class DetailContent extends StatelessWidget {
             backgroundColor: kRichBlack,
             foregroundColor: Colors.white,
             child: IconButton(
+              key: Key('button_back'),
               icon: Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.pop(context);

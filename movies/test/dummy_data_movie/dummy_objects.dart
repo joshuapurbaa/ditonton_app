@@ -1,4 +1,5 @@
 import 'package:core/domain/entities/genre.dart';
+import 'package:flutter/material.dart';
 import 'package:movies/data/models/movie_table.dart';
 import 'package:movies/domain/entities/movie.dart';
 import 'package:movies/domain/entities/movie_detail.dart';
@@ -83,3 +84,33 @@ final testMovieMap = {
 };
 
 final testMovieList = [testMovie];
+
+class FakeHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: ListTile(
+      key: Key('fake_tile'),
+      onTap: () {
+        Navigator.pushNamed(context, '/second');
+      },
+      title: Text('This is Fake'),
+      leading: Icon(Icons.check),
+    ));
+  }
+}
+
+class FakeTargetPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: ListTile(
+      key: Key('fake_second_tile'),
+      onTap: () {
+        Navigator.pop(context);
+      },
+      title: Text('This is Fake'),
+      leading: Icon(Icons.check),
+    ));
+  }
+}

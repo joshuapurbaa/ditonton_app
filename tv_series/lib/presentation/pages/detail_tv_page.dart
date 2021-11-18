@@ -55,9 +55,12 @@ class _DetailTvPageState extends State<DetailTvPage> {
               ),
             );
           } else if (state is TvDetailError) {
-            return Text(state.message);
+            return Text(
+              state.message,
+              key: Key('error_message'),
+            );
           } else {
-            return Text('Failed');
+            return Text('Empty');
           }
         },
       ),
@@ -149,6 +152,7 @@ class DetailContent extends StatelessWidget {
                                 builder: (context, state) {
                                   if (state is ReceivedStatus) {
                                     return ElevatedButton(
+                                      key: Key('btn_watchlist'),
                                       onPressed: () async {
                                         if (!state.status) {
                                           context
@@ -217,10 +221,16 @@ class DetailContent extends StatelessWidget {
                                 builder: (context, state) {
                                   if (state is TvRecommendationLoading) {
                                     return Center(
-                                      child: CircularProgressIndicator(),
+                                      key: Key('recommendation_center'),
+                                      child: CircularProgressIndicator(
+                                        key: Key('recommendation_loading'),
+                                      ),
                                     );
                                   } else if (state is TvRecommendationError) {
-                                    return Text(state.message);
+                                    return Text(
+                                      state.message,
+                                      key: Key('recom_error_message'),
+                                    );
                                   } else if (state is TvRecommendationHasData) {
                                     return Container(
                                       height: 150,
@@ -284,6 +294,7 @@ class DetailContent extends StatelessWidget {
             backgroundColor: kRichBlack,
             foregroundColor: Colors.white,
             child: IconButton(
+              key: Key('button_back'),
               icon: Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.pop(context, true);

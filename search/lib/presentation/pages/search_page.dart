@@ -20,6 +20,7 @@ class SearchPage extends StatelessWidget {
         padding: EdgeInsets.all(8),
         children: [
           TextField(
+            key: Key('search-textfield'),
             onChanged: (query) {
               context.read<SearchMovieBloc>().add(OnQueryMovieChanged(query));
               context.read<SearchTvBloc>().add(OnQueryTvChanged(query));
@@ -40,7 +41,9 @@ class SearchPage extends StatelessWidget {
             builder: (context, state) {
               if (state is SearchMovieLoading) {
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(
+                    key: Key('progress-movie'),
+                  ),
                 );
               } else if (state is SearchMovieHasData) {
                 final result = state.result;

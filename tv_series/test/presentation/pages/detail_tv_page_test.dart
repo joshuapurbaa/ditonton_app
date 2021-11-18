@@ -1,46 +1,46 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:core/utils/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:movies/presentation/bloc/movie_detail_bloc/movie_detail_bloc.dart';
-import 'package:movies/presentation/bloc/movie_detail_bloc/movie_recommendations_bloc.dart';
-import 'package:movies/presentation/bloc/movie_detail_bloc/movie_watchlist_detail_bloc.dart';
-import 'package:movies/presentation/pages/movie_detail_page.dart';
-
-import '../../dummy_data_movie/dummy_objects.dart';
-import 'movie_detail_test_mocks.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_detail_bloc.dart';
+import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_recommendations_bloc.dart';
+import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_watchlist_bloc.dart';
+import 'package:tv_series/presentation/pages/detail_tv_page.dart';
+
+import '../../dummy_data/dummy_objects.dart';
+import 'tv_detail_test_mocks.dart';
 
 void main() {
-  late MockMovieDetailBloc mockMovieDetailBloc;
-  late MockMovieWatchlistDetailBloc mockMovieWatchlistDetailBloc;
-  late MockMovieRecommendationsBloc mockMovieRecommendationsBloc;
+  late MockTvDetailBloc mockTvDetailBloc;
+  late MockTvWatchlistDetailBloc mockTvDetailWatchlistBloc;
+  late MockTvRecommendationsBloc mockTvRecommendationsBloc;
   late Widget widgetTest;
 
   final tId = 1;
 
   setUpAll(() {
-    registerFallbackValue(MovieDetailStateFake());
-    registerFallbackValue(MovieDetailEventFake());
-    registerFallbackValue(MovieWatchlistDetailStateFake());
-    registerFallbackValue(MovieWatchlistDetailEventFake());
-    registerFallbackValue(MovieRecommendationsStateFake());
-    registerFallbackValue(MovieRecommendationsEventFake());
+    registerFallbackValue(TvDetailStateFake());
+    registerFallbackValue(TvDetailEventFake());
+    registerFallbackValue(TvWatchlistDetailStateFake());
+    registerFallbackValue(TvWatchlistDetailEventFake());
+    registerFallbackValue(TvRecommendationsStateFake());
+    registerFallbackValue(TvRecommendationsEventFake());
 
-    mockMovieDetailBloc = MockMovieDetailBloc();
-    mockMovieWatchlistDetailBloc = MockMovieWatchlistDetailBloc();
-    mockMovieRecommendationsBloc = MockMovieRecommendationsBloc();
-    widgetTest = MovieDetailPage(id: tId);
+    mockTvDetailBloc = MockTvDetailBloc();
+    mockTvDetailWatchlistBloc = MockTvWatchlistDetailBloc();
+    mockTvRecommendationsBloc = MockTvRecommendationsBloc();
+    widgetTest = DetailTvPage(id: tId);
   });
 
   Widget _makeTestableWidget(Widget body) {
-    return BlocProvider<MovieDetailBloc>.value(
-      value: mockMovieDetailBloc,
-      child: BlocProvider<MovieWatchlistDetailBloc>.value(
-        value: mockMovieWatchlistDetailBloc,
-        child: BlocProvider<MovieRecommendationsBloc>.value(
-          value: mockMovieRecommendationsBloc,
+    return BlocProvider<TvDetailBloc>.value(
+      value: mockTvDetailBloc,
+      child: BlocProvider<TvDetailWatchlistBloc>.value(
+        value: mockTvDetailWatchlistBloc,
+        child: BlocProvider<TvRecommendationsBloc>.value(
+          value: mockTvRecommendationsBloc,
           child: MaterialApp(
             home: body,
           ),
@@ -50,12 +50,12 @@ void main() {
   }
 
   Widget _makeAnotherTestableWidget(Widget body) {
-    return BlocProvider<MovieDetailBloc>.value(
-      value: mockMovieDetailBloc,
-      child: BlocProvider<MovieWatchlistDetailBloc>.value(
-        value: mockMovieWatchlistDetailBloc,
-        child: BlocProvider<MovieRecommendationsBloc>.value(
-          value: mockMovieRecommendationsBloc,
+    return BlocProvider<TvDetailBloc>.value(
+      value: mockTvDetailBloc,
+      child: BlocProvider<TvDetailWatchlistBloc>.value(
+        value: mockTvDetailWatchlistBloc,
+        child: BlocProvider<TvRecommendationsBloc>.value(
+          value: mockTvRecommendationsBloc,
           child: body,
         ),
       ),
@@ -70,12 +70,12 @@ void main() {
 
   group('Detail movie page', () {
     testWidgets(
-        'should display CircularProgressIndicator when state is MovieDetailLoading',
+        'should display CircularProgressIndicator when state is TvDetailLoading',
         (WidgetTester tester) async {
-      when(() => mockMovieDetailBloc.state).thenReturn(MovieDetailLoading());
-      when(() => mockMovieRecommendationsBloc.state)
-          .thenReturn(MovieRecommendationEmpty());
-      when(() => mockMovieWatchlistDetailBloc.state)
+      when(() => mockTvDetailBloc.state).thenReturn(TvDetailLoading());
+      when(() => mockTvRecommendationsBloc.state)
+          .thenReturn(TvRecommendationEmpty());
+      when(() => mockTvDetailWatchlistBloc.state)
           .thenReturn(ReceivedStatus(false, ''));
       final centerFinder = find.byType(Center);
       final circularProgressIndicatorFInder =
@@ -88,11 +88,11 @@ void main() {
 
     testWidgets('Page should go back when onBack tapped',
         (WidgetTester tester) async {
-      when(() => mockMovieDetailBloc.state)
-          .thenReturn(MovieDetailHasData(testMovieDetail));
-      when(() => mockMovieRecommendationsBloc.state)
-          .thenReturn(MovieRecommendationHasData([]));
-      when(() => mockMovieWatchlistDetailBloc.state)
+      when(() => mockTvDetailBloc.state)
+          .thenReturn(TvDetailHasData(testTvDetail));
+      when(() => mockTvRecommendationsBloc.state)
+          .thenReturn(TvRecommendationHasData([]));
+      when(() => mockTvDetailWatchlistBloc.state)
           .thenReturn(ReceivedStatus(false, ''));
 
       await tester.pumpWidget(MaterialApp(routes: routes));
@@ -122,11 +122,11 @@ void main() {
     testWidgets(
         'watchlist button should display add icon when movie not added  ',
         (WidgetTester tester) async {
-      when(() => mockMovieDetailBloc.state)
-          .thenReturn(MovieDetailHasData(testMovieDetail));
-      when(() => mockMovieRecommendationsBloc.state)
-          .thenReturn(MovieRecommendationHasData([]));
-      when(() => mockMovieWatchlistDetailBloc.state)
+      when(() => mockTvDetailBloc.state)
+          .thenReturn(TvDetailHasData(testTvDetail));
+      when(() => mockTvRecommendationsBloc.state)
+          .thenReturn(TvRecommendationHasData([]));
+      when(() => mockTvDetailWatchlistBloc.state)
           .thenReturn(ReceivedStatus(false, ''));
 
       final watchlistButtonIcon = find.byIcon(Icons.add);
@@ -139,24 +139,24 @@ void main() {
     testWidgets(
         'watchlist button should display Snackbar when added to watchlist',
         (WidgetTester tester) async {
-      when(() => mockMovieDetailBloc.state)
-          .thenReturn(MovieDetailHasData(testMovieDetail));
-      when(() => mockMovieRecommendationsBloc.state)
-          .thenReturn(MovieRecommendationHasData([]));
+      when(() => mockTvDetailBloc.state)
+          .thenReturn(TvDetailHasData(testTvDetail));
+      when(() => mockTvRecommendationsBloc.state)
+          .thenReturn(TvRecommendationHasData([]));
       whenListen(
-        mockMovieWatchlistDetailBloc,
+        mockTvDetailWatchlistBloc,
         Stream.fromIterable([
           ReceivedStatus(false, ''),
           LoadingStatus(),
           ReceivedStatus(
             true,
-            MovieWatchlistDetailBloc.watchlistAddSuccessMessage,
+            TvDetailWatchlistBloc.watchlistAddSuccessMessage,
           ),
         ]),
         initialState: ReceivedStatus(false, ''),
       );
 
-      expect(mockMovieWatchlistDetailBloc.state, ReceivedStatus(false, ''));
+      expect(mockTvDetailWatchlistBloc.state, ReceivedStatus(false, ''));
 
       final watchlistButton = find.byKey(Key('btn_watchlist'));
 
@@ -168,8 +168,8 @@ void main() {
 
       await tester.pump();
       verify(
-        () => mockMovieWatchlistDetailBloc.add(
-          AddWatchlist(testMovieDetail),
+        () => mockTvDetailWatchlistBloc.add(
+          AddWatchlist(testTvDetail),
         ),
       ).called(1);
       await tester.pump();
@@ -180,22 +180,21 @@ void main() {
       expect(find.byType(SnackBar), findsOneWidget);
       expect(find.byType(AlertDialog), findsNothing);
       expect(
-        mockMovieWatchlistDetailBloc.state,
-        ReceivedStatus(
-            true, MovieWatchlistDetailBloc.watchlistAddSuccessMessage),
+        mockTvDetailWatchlistBloc.state,
+        ReceivedStatus(true, TvDetailWatchlistBloc.watchlistAddSuccessMessage),
       );
-      expect(find.text(MovieWatchlistDetailBloc.watchlistAddSuccessMessage),
+      expect(find.text(TvDetailWatchlistBloc.watchlistAddSuccessMessage),
           findsOneWidget);
     });
     testWidgets(
         'Watchlist button should display AlertDialog when watchlist status is Error',
         (WidgetTester tester) async {
-      when(() => mockMovieDetailBloc.state)
-          .thenReturn(MovieDetailHasData(testMovieDetail));
-      when(() => mockMovieRecommendationsBloc.state)
-          .thenReturn(MovieRecommendationHasData([]));
+      when(() => mockTvDetailBloc.state)
+          .thenReturn(TvDetailHasData(testTvDetail));
+      when(() => mockTvRecommendationsBloc.state)
+          .thenReturn(TvRecommendationHasData([]));
       whenListen(
-        mockMovieWatchlistDetailBloc,
+        mockTvDetailWatchlistBloc,
         Stream.fromIterable([
           ReceivedStatus(false, ''),
           LoadingStatus(),
@@ -204,7 +203,7 @@ void main() {
         initialState: ReceivedStatus(false, ''),
       );
 
-      expect(mockMovieWatchlistDetailBloc.state, ReceivedStatus(false, ''));
+      expect(mockTvDetailWatchlistBloc.state, ReceivedStatus(false, ''));
 
       await tester.pumpWidget(_makeTestableWidget(widgetTest));
       await tester.pump();
@@ -214,18 +213,17 @@ void main() {
       expect(find.byIcon(Icons.check), findsNothing);
       expect(find.byType(SnackBar), findsNothing);
       expect(find.byType(AlertDialog), findsOneWidget);
-      expect(
-          mockMovieWatchlistDetailBloc.state, ErrorStatus('Database Failure'));
+      expect(mockTvDetailWatchlistBloc.state, ErrorStatus('Database Failure'));
     });
 
     testWidgets(
         'Recommendation should display loading first when its come to load',
         (WidgetTester tester) async {
-      when(() => mockMovieDetailBloc.state)
-          .thenReturn(MovieDetailHasData(testMovieDetail));
-      when(() => mockMovieRecommendationsBloc.state)
-          .thenReturn(MovieRecommendationLoading());
-      when(() => mockMovieWatchlistDetailBloc.state)
+      when(() => mockTvDetailBloc.state)
+          .thenReturn(TvDetailHasData(testTvDetail));
+      when(() => mockTvRecommendationsBloc.state)
+          .thenReturn(TvRecommendationLoading());
+      when(() => mockTvDetailWatchlistBloc.state)
           .thenReturn(ReceivedStatus(false, ''));
 
       final centerFinder = find.byKey(Key('recommendation_center'));
@@ -240,11 +238,11 @@ void main() {
 
     testWidgets('Recommendation shows when exists',
         (WidgetTester tester) async {
-      when(() => mockMovieDetailBloc.state)
-          .thenReturn(MovieDetailHasData(testMovieDetail));
-      when(() => mockMovieRecommendationsBloc.state)
-          .thenReturn(MovieRecommendationHasData([testMovie]));
-      when(() => mockMovieWatchlistDetailBloc.state)
+      when(() => mockTvDetailBloc.state)
+          .thenReturn(TvDetailHasData(testTvDetail));
+      when(() => mockTvRecommendationsBloc.state)
+          .thenReturn(TvRecommendationHasData([testTv]));
+      when(() => mockTvDetailWatchlistBloc.state)
           .thenReturn(ReceivedStatus(false, ''));
 
       final listViewFinder = find.byType(ListView);
@@ -255,11 +253,11 @@ void main() {
 
     testWidgets('Recommendations should display text with message when Error',
         (WidgetTester tester) async {
-      when(() => mockMovieDetailBloc.state)
-          .thenReturn(MovieDetailHasData(testMovieDetail));
-      when(() => mockMovieRecommendationsBloc.state)
-          .thenReturn(MovieRecommendationError('Error message'));
-      when(() => mockMovieWatchlistDetailBloc.state)
+      when(() => mockTvDetailBloc.state)
+          .thenReturn(TvDetailHasData(testTvDetail));
+      when(() => mockTvRecommendationsBloc.state)
+          .thenReturn(TvRecommendationError('Error message'));
+      when(() => mockTvDetailWatchlistBloc.state)
           .thenReturn(ReceivedStatus(false, ''));
 
       final textFinder = find.byKey(Key('recom_error_message'));
@@ -271,11 +269,11 @@ void main() {
 
     testWidgets('Page should display text with message when Error',
         (WidgetTester tester) async {
-      when(() => mockMovieDetailBloc.state)
-          .thenReturn(MovieDetailError('Error message'));
-      when(() => mockMovieRecommendationsBloc.state)
-          .thenReturn(MovieRecommendationEmpty());
-      when(() => mockMovieWatchlistDetailBloc.state)
+      when(() => mockTvDetailBloc.state)
+          .thenReturn(TvDetailError('Error message'));
+      when(() => mockTvRecommendationsBloc.state)
+          .thenReturn(TvRecommendationEmpty());
+      when(() => mockTvDetailWatchlistBloc.state)
           .thenReturn(ReceivedStatus(false, ''));
 
       final textFinder = find.byKey(
@@ -289,10 +287,10 @@ void main() {
 
     testWidgets('Page should display text with message when Empty',
         (WidgetTester tester) async {
-      when(() => mockMovieDetailBloc.state).thenReturn(MovieDetailEmpty());
-      when(() => mockMovieRecommendationsBloc.state)
-          .thenReturn(MovieRecommendationEmpty());
-      when(() => mockMovieWatchlistDetailBloc.state)
+      when(() => mockTvDetailBloc.state).thenReturn(TvDetailEmpty());
+      when(() => mockTvRecommendationsBloc.state)
+          .thenReturn(TvRecommendationEmpty());
+      when(() => mockTvDetailWatchlistBloc.state)
           .thenReturn(ReceivedStatus(false, ''));
 
       final textFinder = find.text('Empty');

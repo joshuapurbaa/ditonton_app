@@ -24,6 +24,13 @@ class _TopRatedTvPageState extends State<TopRatedTvPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          key: Key('button_back'),
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: Text('Top Rated Tv Series'),
       ),
       body: Padding(
@@ -49,6 +56,7 @@ class _TopRatedTvPageState extends State<TopRatedTvPage> {
               );
             } else {
               return Center(
+                key: Key('Empty'),
                 child: Text('Empty data'),
               );
             }

@@ -20,7 +20,6 @@ import 'package:movies/presentation/pages/home_movie_page.dart';
 import 'package:movies/presentation/pages/movie_detail_page.dart';
 import 'package:movies/presentation/pages/popular_movies_page.dart';
 import 'package:movies/presentation/pages/top_rated_movies_page.dart';
-import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
 import 'package:search/presentation/bloc/search_movie_bloc.dart';
 import 'package:search/presentation/bloc/search_tv_bloc.dart';
@@ -42,7 +41,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return MultiBlocProvider(
       providers: [
         // BLOC
         BlocProvider(
@@ -111,10 +110,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData.dark().copyWith(
-          colorScheme: kColorScheme,
+          colorScheme: kColorScheme.copyWith(
+            secondary: kMikadoYellow,
+          ),
           primaryColor: kRichBlack,
-          // ignore: deprecated_member_use
-          accentColor: kMikadoYellow,
           scaffoldBackgroundColor: kRichBlack,
           textTheme: kTextTheme,
         ),
