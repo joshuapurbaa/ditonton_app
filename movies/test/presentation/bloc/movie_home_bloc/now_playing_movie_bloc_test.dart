@@ -8,7 +8,7 @@ import 'package:movies/domain/entities/movie.dart';
 import 'package:movies/domain/usecase/get_now_playing_movies.dart';
 import 'package:movies/presentation/bloc/movie_home_bloc/movie_home_bloc.dart';
 
-import '../../../dummy_data_movie/dummy_objects.dart';
+import '../../../dummy_data/dummy_objects.dart';
 import 'now_playing_movie_bloc_test.mocks.dart';
 
 @GenerateMocks([GetNowPlayingMovies])

@@ -59,9 +59,6 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
               style: kHeading6,
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
           BlocBuilder<WatchlistMovieBloc, WatchlistMovieState>(
             builder: (context, state) {
               if (state is WatchlistMovieLoading) {
@@ -70,25 +67,7 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
                 );
               } else if (state is WatchlistMovieHasData) {
                 return state.result.length < 1
-                    ? Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.pushReplacement(context,
-                                MaterialPageRoute(builder: (_) => MainPage()));
-                          },
-                          child: Text(
-                            'Masih kosong...\n Cari Movies...',
-                            style: kSubtitle,
-                          ),
-                          style: TextButton.styleFrom(
-                            backgroundColor: kOxfordBlue,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      )
+                    ? buttonMasihKosong('Masih kosong...\n Cari Movies...')
                     : ListView.builder(
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
@@ -118,9 +97,6 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
               style: kHeading6,
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
           BlocBuilder<WatchlistTvBloc, WatchlistTvState>(
             builder: (context, state) {
               if (state is WatchlistTvLoading) {
@@ -129,25 +105,7 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
                 );
               } else if (state is WatchlistTvHasData) {
                 return state.result.length < 1
-                    ? Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.pushReplacement(context,
-                                MaterialPageRoute(builder: (_) => MainPage()));
-                          },
-                          child: Text(
-                            'Masih kosong...\n Cari Tv...',
-                            style: kSubtitle,
-                          ),
-                          style: TextButton.styleFrom(
-                            backgroundColor: kOxfordBlue,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      )
+                    ? buttonMasihKosong('Masih kosong...\n Cari Tv...')
                     : ListView.builder(
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
@@ -170,6 +128,28 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
             },
           ),
         ],
+      ),
+    );
+  }
+
+  Widget buttonMasihKosong(String text) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      child: TextButton(
+        onPressed: () {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (_) => MainPage()));
+        },
+        child: Text(
+          text,
+          style: kSubtitle,
+        ),
+        style: TextButton.styleFrom(
+          backgroundColor: kOxfordBlue,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
       ),
     );
   }

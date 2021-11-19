@@ -9,7 +9,7 @@ import 'package:movies/presentation/bloc/movie_detail_bloc/movie_detail_bloc.dar
 import 'package:movies/presentation/bloc/movie_detail_bloc/movie_recommendations_bloc.dart';
 import 'package:movies/presentation/bloc/movie_detail_bloc/movie_watchlist_detail_bloc.dart';
 
-import '../../dummy_data_movie/dummy_objects.dart';
+import '../../dummy_data/dummy_objects.dart';
 import 'movie_detail_bloc_test.mocks.dart';
 
 @GenerateMocks([

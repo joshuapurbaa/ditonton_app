@@ -11,3 +11,5 @@ export 'data/datasource/movie_remote_data_source.dart';
 export 'domain/entities/movie.dart';
 export 'domain/usecase/get_movie_recommendations.dart';
 export 'domain/usecase/get_movie_detail.dart';
+export 'domain/entities/movie_detail.dart';
+export 'data/models/movie_table.dart';

@@ -11,8 +11,7 @@ import 'package:movies/data/models/movie_model.dart';
 import 'package:movies/data/repository/movie_repository_impl.dart';
 import 'package:movies/domain/entities/movie.dart';
 
-import '../../../../core/test/helpers/test_helper.mocks.dart';
-import '../../dummy_data_movie/dummy_objects.dart';
+import '../../dummy_data/dummy_objects.dart';
 import '../../helpers/test_helper.mocks.dart';
 
 void main() {

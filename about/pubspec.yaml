@@ -17,7 +17,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
-
+  test_cov_console: ^0.1.5
+  
 flutter:
+
+  assets:
+    - assets/
 
   

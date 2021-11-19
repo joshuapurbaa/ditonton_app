@@ -7,7 +7,7 @@ import 'package:movies/presentation/bloc/popular_movie_bloc/popular_movie_bloc.d
 import 'package:movies/presentation/pages/popular_movies_page.dart';
 import 'package:movies/presentation/widgets/movie_card_list.dart';
 
-import '../../dummy_data_movie/dummy_objects.dart';
+import '../../dummy_data/dummy_objects.dart';
 import 'movie_detail_test_mocks.dart';
 
 void main() {

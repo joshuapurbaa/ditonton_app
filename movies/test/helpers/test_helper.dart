@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
   MovieRepository,
   MovieRemoteDataSource,
   MovieLocalDataSource,
+  NetworkInfo,
 ], customMocks: [
   MockSpec<http.Client>(as: #MockHttpClient)
 ])

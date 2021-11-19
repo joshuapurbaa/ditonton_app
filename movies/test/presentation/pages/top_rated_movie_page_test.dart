@@ -7,7 +7,7 @@ import 'package:movies/presentation/bloc/top_rated_movie_bloc/top_rated_movie_bl
 import 'package:movies/presentation/pages/top_rated_movies_page.dart';
 import 'package:movies/presentation/widgets/movie_card_list.dart';
 
-import '../../dummy_data_movie/dummy_objects.dart';
+import '../../dummy_data/dummy_objects.dart';
 import 'movie_detail_test_mocks.dart';
 
 void main() {
