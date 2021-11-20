@@ -71,14 +71,14 @@ final testMovieCacheMap = {
   'id': 557,
   'overview':
       'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
-  'posterPath': '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
+  'poster_path': '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
   'title': 'Spider-Man',
 };
 
 final testMovieMap = {
   'id': 1,
   'overview': 'overview',
-  'posterPath': 'posterPath',
+  'poster_path': 'posterPath',
   'title': 'title',
 };
 
@@ -281,6 +281,19 @@ final testTvSeriesDetail = TvDetail(
   tagline: 'tagline',
   type: 'type',
   voteAverage: 1.1,
+  voteCount: 1,
+);
+
+final testTvEpisodes = TvEpisode(
+  airDate: DateTime.parse("2014-04-14"),
+  episodeNumber: 1,
+  id: 1,
+  name: 'name',
+  overview: 'overview',
+  productionCode: 'productionCode',
+  seasonNumber: 1,
+  stillPath: 'stillPath',
+  voteAverage: 1.0,
   voteCount: 1,
 );
 
