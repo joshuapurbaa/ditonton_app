@@ -284,6 +284,19 @@ final testTvSeriesDetail = TvDetail(
   voteCount: 1,
 );
 
+final testTvEpisodes = TvEpisode(
+  airDate: DateTime.parse("2014-04-14"),
+  episodeNumber: 1,
+  id: 1,
+  name: 'name',
+  overview: 'overview',
+  productionCode: 'productionCode',
+  seasonNumber: 1,
+  stillPath: 'stillPath',
+  voteAverage: 1.0,
+  voteCount: 1,
+);
+
 final testWatchlistTvSeries = Tv.watchlist(
   id: 1,
   overview: 'overview',
@@ -301,7 +314,7 @@ final testTvTable = TvTable(
 final testTvMap = {
   'id': 1,
   'overview': 'overview',
-  'posterPath': 'posterPath',
+  'poster_path': 'posterPath',
   'name': 'name',
 };
 

@@ -35,7 +35,7 @@ void main() {
   group('Exception test', () {
     test('Throw DatabaseException test', () async {
       // arrange
-      when(mockDatabaseHelper.insertWatchlist(testMovieTable))
+      when(mockDatabaseHelper.insertWatchlistMovie(testMovieTable))
           .thenThrow(DatabaseException(''));
       // act
       final call = movieLocalDataSourceImpl.insertWatchlist(testMovieTable);

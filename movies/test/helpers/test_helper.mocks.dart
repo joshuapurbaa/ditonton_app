@@ -54,10 +54,10 @@ class MockDatabaseHelper extends _i1.Mock implements _i5.DatabaseHelper {
       Invocation.getter(#database),
       returnValue: Future<_i7.Database?>.value()) as _i6.Future<_i7.Database?>);
   @override
-  _i6.Future<void> insertCacheTransaction(
+  _i6.Future<void> insertCacheTransactionMovie(
           List<_i8.MovieTable>? movies, String? category) =>
       (super.noSuchMethod(
-          Invocation.method(#insertCacheTransaction, [movies, category]),
+          Invocation.method(#insertCacheTransactionMovie, [movies, category]),
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i6.Future<void>);
   @override
@@ -67,16 +67,16 @@ class MockDatabaseHelper extends _i1.Mock implements _i5.DatabaseHelper {
                   <Map<String, dynamic>>[]))
           as _i6.Future<List<Map<String, dynamic>>>);
   @override
-  _i6.Future<int> clearCache(String? category) =>
-      (super.noSuchMethod(Invocation.method(#clearCache, [category]),
+  _i6.Future<int> clearCacheMovie(String? category) =>
+      (super.noSuchMethod(Invocation.method(#clearCacheMovie, [category]),
           returnValue: Future<int>.value(0)) as _i6.Future<int>);
   @override
-  _i6.Future<int> insertWatchlist(_i8.MovieTable? movie) =>
-      (super.noSuchMethod(Invocation.method(#insertWatchlist, [movie]),
+  _i6.Future<int> insertWatchlistMovie(_i8.MovieTable? movie) =>
+      (super.noSuchMethod(Invocation.method(#insertWatchlistMovie, [movie]),
           returnValue: Future<int>.value(0)) as _i6.Future<int>);
   @override
-  _i6.Future<int> removeWatchlist(_i8.MovieTable? movie) =>
-      (super.noSuchMethod(Invocation.method(#removeWatchlist, [movie]),
+  _i6.Future<int> removeWatchlistMovie(_i8.MovieTable? movie) =>
+      (super.noSuchMethod(Invocation.method(#removeWatchlistMovie, [movie]),
           returnValue: Future<int>.value(0)) as _i6.Future<int>);
   @override
   _i6.Future<Map<String, dynamic>?> getMovieById(int? id) =>
@@ -89,6 +89,23 @@ class MockDatabaseHelper extends _i1.Mock implements _i5.DatabaseHelper {
               returnValue: Future<List<Map<String, dynamic>>>.value(
                   <Map<String, dynamic>>[]))
           as _i6.Future<List<Map<String, dynamic>>>);
+  @override
+  _i6.Future<void> insertCacheTransactionTv(
+          List<_i9.TvTable>? tvSeries, String? category) =>
+      (super.noSuchMethod(
+          Invocation.method(#insertCacheTransactionTv, [tvSeries, category]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i6.Future<void>);
+  @override
+  _i6.Future<List<Map<String, dynamic>>> getCacheTv(String? category) =>
+      (super.noSuchMethod(Invocation.method(#getCacheTv, [category]),
+              returnValue: Future<List<Map<String, dynamic>>>.value(
+                  <Map<String, dynamic>>[]))
+          as _i6.Future<List<Map<String, dynamic>>>);
+  @override
+  _i6.Future<int> clearCacheTv(String? category) =>
+      (super.noSuchMethod(Invocation.method(#clearCacheTv, [category]),
+          returnValue: Future<int>.value(0)) as _i6.Future<int>);
   @override
   _i6.Future<int> insertWatchlistTv(_i9.TvTable? tv) =>
       (super.noSuchMethod(Invocation.method(#insertWatchlistTv, [tv]),
@@ -270,6 +287,28 @@ class MockMovieLocalDataSource extends _i1.Mock
   @override
   _i6.Future<List<_i8.MovieTable>> getCachedNowPlayingMovies() =>
       (super.noSuchMethod(Invocation.method(#getCachedNowPlayingMovies, []),
+              returnValue:
+                  Future<List<_i8.MovieTable>>.value(<_i8.MovieTable>[]))
+          as _i6.Future<List<_i8.MovieTable>>);
+  @override
+  _i6.Future<void> cachePopularMovies(List<_i8.MovieTable>? movies) =>
+      (super.noSuchMethod(Invocation.method(#cachePopularMovies, [movies]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i6.Future<void>);
+  @override
+  _i6.Future<List<_i8.MovieTable>> getCachedPopularMovies() =>
+      (super.noSuchMethod(Invocation.method(#getCachedPopularMovies, []),
+              returnValue:
+                  Future<List<_i8.MovieTable>>.value(<_i8.MovieTable>[]))
+          as _i6.Future<List<_i8.MovieTable>>);
+  @override
+  _i6.Future<void> cacheTopRatedMovies(List<_i8.MovieTable>? movies) =>
+      (super.noSuchMethod(Invocation.method(#cacheTopRatedMovies, [movies]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i6.Future<void>);
+  @override
+  _i6.Future<List<_i8.MovieTable>> getCachedTopRatedMovies() =>
+      (super.noSuchMethod(Invocation.method(#getCachedTopRatedMovies, []),
               returnValue:
                   Future<List<_i8.MovieTable>>.value(<_i8.MovieTable>[]))
           as _i6.Future<List<_i8.MovieTable>>);

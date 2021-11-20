@@ -9,6 +9,10 @@ abstract class MovieLocalDataSource {
   Future<List<MovieTable>> getWatchlistMovies();
   Future<void> cacheNowPlayingMovies(List<MovieTable> movies);
   Future<List<MovieTable>> getCachedNowPlayingMovies();
+  Future<void> cachePopularMovies(List<MovieTable> movies);
+  Future<List<MovieTable>> getCachedPopularMovies();
+  Future<void> cacheTopRatedMovies(List<MovieTable> movies);
+  Future<List<MovieTable>> getCachedTopRatedMovies();
 }
 
 class MovieLocalDataSourceImpl implements MovieLocalDataSource {
@@ -19,7 +23,7 @@ class MovieLocalDataSourceImpl implements MovieLocalDataSource {
   @override
   Future<String> insertWatchlist(MovieTable movie) async {
     try {
-      await databaseHelper.insertWatchlist(movie);
+      await databaseHelper.insertWatchlistMovie(movie);
       return 'Added to Watchlist';
     } catch (e) {
       throw DatabaseException(e.toString());
@@ -29,7 +33,7 @@ class MovieLocalDataSourceImpl implements MovieLocalDataSource {
   @override
   Future<String> removeWatchlist(MovieTable movie) async {
     try {
-      await databaseHelper.removeWatchlist(movie);
+      await databaseHelper.removeWatchlistMovie(movie);
       return 'Removed from Watchlist';
     } catch (e) {
       throw DatabaseException(e.toString());
@@ -54,14 +58,49 @@ class MovieLocalDataSourceImpl implements MovieLocalDataSource {
 
   @override
   Future<void> cacheNowPlayingMovies(List<MovieTable> movies) async {
-    await databaseHelper.clearCache('now playing');
-    await databaseHelper.insertCacheTransaction(movies, 'now playing');
+    await databaseHelper.clearCacheMovie('now playing');
+    await databaseHelper.insertCacheTransactionMovie(movies, 'now playing');
   }
 
   @override
   Future<List<MovieTable>> getCachedNowPlayingMovies() async {
     final result = await databaseHelper.getCacheMovies('now playing');
     if (result.length > 0) {
+      return result.map((data) => MovieTable.fromMap(data)).toList();
+    } else {
+      throw CacheException("Can't get the data :(");
+    }
+  }
+
+  @override
+  Future<void> cachePopularMovies(List<MovieTable> movies) async {
+    await databaseHelper.clearCacheMovie('popular movies');
+    await databaseHelper.insertCacheTransactionMovie(movies, 'popular movies');
+  }
+
+  @override
+  Future<void> cacheTopRatedMovies(List<MovieTable> movies) async {
+    await databaseHelper.clearCacheMovie('top rated movies');
+    await databaseHelper.insertCacheTransactionMovie(
+      movies,
+      'top rated movies',
+    );
+  }
+
+  @override
+  Future<List<MovieTable>> getCachedPopularMovies() async {
+    final result = await databaseHelper.getCacheMovies('popular movies');
+    if (result.isNotEmpty) {
+      return result.map((data) => MovieTable.fromMap(data)).toList();
+    } else {
+      throw CacheException("Can't get the data :(");
+    }
+  }
+
+  @override
+  Future<List<MovieTable>> getCachedTopRatedMovies() async {
+    final result = await databaseHelper.getCacheMovies('top rated movies');
+    if (result.isNotEmpty) {
       return result.map((data) => MovieTable.fromMap(data)).toList();
     } else {
       throw CacheException("Can't get the data :(");

@@ -6,7 +6,7 @@ void main() {
   final Map<String, dynamic> tvTableJson = {
     'id': 1,
     'name': 'name',
-    'posterPath': 'posterPath',
+    'poster_path': 'posterPath',
     'overview': 'overview',
   };
 

@@ -23,23 +23,23 @@ class MovieTable extends Equatable {
         overview: movie.overview,
       );
 
-  factory MovieTable.fromMap(Map<String, dynamic> map) => MovieTable(
-        id: map['id'],
-        title: map['title'],
-        posterPath: map['posterPath'],
-        overview: map['overview'],
-      );
   factory MovieTable.fromDTO(MovieModel movie) => MovieTable(
         id: movie.id,
         title: movie.title,
         posterPath: movie.posterPath,
         overview: movie.overview,
       );
+  factory MovieTable.fromMap(Map<String, dynamic> map) => MovieTable(
+        id: map['id'],
+        title: map['title'],
+        posterPath: map['poster_path'],
+        overview: map['overview'],
+      );
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'title': title,
-        'posterPath': posterPath,
+        'poster_path': posterPath,
         'overview': overview,
       };
 
