@@ -14,8 +14,7 @@ class TvSeriesAirDate extends StatelessWidget {
     if (tvSeries.inProduction) {
       if (tvSeries.firstAirDate.toString().isNotEmpty) {
         var parseDate = tvSeries.firstAirDate;
-        var date = '${parseDate?.day}-${parseDate?.month}-${parseDate?.year}';
-        return Text('$date - Now');
+        return Text('$parseDate - Now');
       } else {
         return Text('Unknown Date Production');
       }

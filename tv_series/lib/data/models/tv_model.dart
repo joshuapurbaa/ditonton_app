@@ -20,8 +20,8 @@ class TvModel extends Equatable {
 
   final String? posterPath;
   final String? backdropPath;
-  final DateTime? firstAirDate;
-  final List<int>? genreIds;
+  final String? firstAirDate;
+  final List<int> genreIds;
   final int id;
   final String? name;
   final String? originalName;
@@ -36,12 +36,7 @@ class TvModel extends Equatable {
         posterPath: json['poster_path'],
         backdropPath:
             json['backdrop_path'] == null ? null : json['backdrop_path'],
-        firstAirDate:
-            json['first_air_date'] == null || json['first_air_date'] == ''
-                ? null
-                : DateTime.parse(
-                    json['first_air_date'],
-                  ),
+        firstAirDate: json['first_air_date'],
         genreIds: List<int>.from(json['genre_ids'].map((x) => x)),
         id: json['id'],
         name: json['name'],
@@ -53,6 +48,22 @@ class TvModel extends Equatable {
         voteAverage: json['vote_average'].toDouble(),
         voteCount: json['vote_count'],
       );
+
+  Map<String, dynamic> toJson() => {
+        'poster_path': posterPath,
+        'backdrop_path': backdropPath,
+        'first_air_date': firstAirDate,
+        'genre_ids': List<dynamic>.from(genreIds.map((x) => x)),
+        'id': id,
+        'name': name,
+        'original_name': originalName,
+        'overview': overview,
+        'origin_country': originCountry,
+        'original_language': originalLanguage,
+        'popularity': popularity,
+        'vote_average': voteAverage,
+        'vote_count': voteCount,
+      };
 
   Tv toEntity() {
     return Tv(

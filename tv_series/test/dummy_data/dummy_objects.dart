@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movies/movies.dart';
 import 'package:core/core.dart';
+import 'package:tv_series/domain/entities/tv_crew.dart';
+import 'package:tv_series/domain/entities/tv_episodes_detail.dart';
+import 'package:tv_series/domain/entities/tv_guest_stars.dart';
+import 'package:tv_series/domain/entities/tv_season_detail.dart';
 import 'package:tv_series/tv_series.dart';
 
 final testMovie = Movie(
@@ -92,7 +96,7 @@ final testTv = Tv(
   voteAverage: 1.39,
   overview:
       'The early life of Queen Victoria, from her accession to the throne at the tender age of 18 through to her courtship and marriage to Prince Albert. Victoria went on to rule for 63 years, and was the longest-serving monarch until she was overtaken by Elizabeth II on 9th September 2016. Rufus Sewell was Victoria’s first prime minister; the two immediately connected and their intimate friendship became a popular source of gossip that threatened to destabilise the Government – angering both Tory and Whigs alike.',
-  firstAirDate: DateTime.parse('2016-08-28'),
+  firstAirDate: '2016-08-28',
   originCountry: ['GB'],
   genreIds: [18],
   originalLanguage: 'en',
@@ -112,61 +116,45 @@ final tvNetwork = TvNetwork(
 
 final testTvDetail = TvDetail(
   backdropPath: 'backdropPath',
-  createdBy: [
-    CreatedBy(
-      id: 1,
-      creditId: 'creditId',
-      name: 'name',
-      gender: 1,
-      profilePath: 'profilePath',
-    )
-  ],
   episodeRunTime: [1, 2],
-  firstAirDate: DateTime.parse("2014-04-14"),
+  firstAirDate: '2014-04-14',
   genres: [
     Genre(
       id: 1,
       name: 'Action',
     ),
   ],
-  homepage: 'homepage',
   id: 1,
+  homepage: 'homepage',
   inProduction: true,
-  languages: ['aa', 'bb'],
-  lastAirDate: DateTime.parse("2014-04-14"),
-  lastEpisodeToAir: TVLastEpisodesToAir(
-    airDate: DateTime.parse("2014-04-14"),
+  lastAirDate: '2014-04-14',
+  lastEpisodeToAir: TvEpisodeDetail(
+    airDate: '2014-04-14',
     episodeNumber: 1,
     id: 1,
     name: 'name',
     overview: 'overview',
-    productionCode: 'productionCode',
-    seasonNumber: 1,
     stillPath: 'stillPath',
-    voteAverage: 0,
-    voteCount: 1,
   ),
   name: 'name',
-  nextEpisodeToAir: 12,
-  networks: [tvNetwork],
+  nextEpisodeToAir: TvEpisodeDetail(
+    airDate: '2014-04-14',
+    episodeNumber: 2,
+    id: 2,
+    name: 'name',
+    overview: 'overview',
+    stillPath: 'stillPath',
+  ),
   numberOfEpisodes: 1,
   numberOfSeasons: 1,
-  originCountry: ['aa'],
   originalLanguage: 'originalLanguage',
   originalName: 'originalName',
   overview: 'overview',
   popularity: 1.1,
   posterPath: 'posterPath',
-  productionCompanies: [tvNetwork],
-  productionCountries: [
-    TvProductionCountry(
-      iso31661: 'iso31661',
-      name: 'name',
-    )
-  ],
   seasons: [
-    TvSeason(
-      airDate: DateTime.parse("2014-04-14"),
+    TvSeasonDetail(
+      airDate: '2014-04-14',
       episodeCount: 1,
       id: 1,
       name: 'name',
@@ -174,13 +162,6 @@ final testTvDetail = TvDetail(
       posterPath: 'posterPath',
       seasonNumber: 1,
     ),
-  ],
-  spokenLanguages: [
-    TvSpokenLanguage(
-      englishName: 'englishName',
-      iso6391: 'iso6391',
-      name: 'name',
-    )
   ],
   status: 'status',
   tagline: 'tagline',
@@ -191,7 +172,7 @@ final testTvDetail = TvDetail(
 
 final testTvSeries = Tv(
   backdropPath: 'backdropPath',
-  firstAirDate: DateTime.parse('2016-08-28'),
+  firstAirDate: '2016-08-28',
   genreIds: [],
   id: 1,
   name: 'name',
@@ -207,61 +188,45 @@ final testTvSeries = Tv(
 
 final testTvSeriesDetail = TvDetail(
   backdropPath: 'backdropPath',
-  createdBy: [
-    CreatedBy(
-      id: 1,
-      creditId: 'creditId',
-      name: 'name',
-      gender: 1,
-      profilePath: 'profilePath',
-    )
-  ],
   episodeRunTime: [1, 2],
-  firstAirDate: DateTime.parse("2014-04-14"),
+  firstAirDate: '2014-04-14',
   genres: [
     Genre(
       id: 1,
       name: 'Action',
     ),
   ],
-  homepage: 'homepage',
   id: 1,
+  homepage: 'homePage',
   inProduction: true,
-  languages: ['aa', 'bb'],
-  lastAirDate: DateTime.parse("2014-04-14"),
-  lastEpisodeToAir: TVLastEpisodesToAir(
-    airDate: DateTime.parse("2014-04-14"),
+  lastAirDate: '2014-04-20',
+  lastEpisodeToAir: TvEpisodeDetail(
+    airDate: '2014-04-14',
     episodeNumber: 1,
     id: 1,
     name: 'name',
     overview: 'overview',
-    productionCode: 'productionCode',
-    seasonNumber: 1,
     stillPath: 'stillPath',
-    voteAverage: 0,
-    voteCount: 1,
   ),
   name: 'name',
-  nextEpisodeToAir: 12,
-  networks: [tvNetwork],
+  nextEpisodeToAir: TvEpisodeDetail(
+    airDate: '2015-04-14',
+    episodeNumber: 2,
+    id: 2,
+    name: 'name',
+    overview: 'overview',
+    stillPath: 'stillPath',
+  ),
   numberOfEpisodes: 1,
   numberOfSeasons: 1,
-  originCountry: ['aa'],
   originalLanguage: 'originalLanguage',
   originalName: 'originalName',
   overview: 'overview',
   popularity: 1.1,
   posterPath: 'posterPath',
-  productionCompanies: [tvNetwork],
-  productionCountries: [
-    TvProductionCountry(
-      iso31661: 'iso31661',
-      name: 'name',
-    )
-  ],
   seasons: [
-    TvSeason(
-      airDate: DateTime.parse("2014-04-14"),
+    TvSeasonDetail(
+      airDate: '2014-04-14',
       episodeCount: 1,
       id: 1,
       name: 'name',
@@ -269,13 +234,6 @@ final testTvSeriesDetail = TvDetail(
       posterPath: 'posterPath',
       seasonNumber: 1,
     ),
-  ],
-  spokenLanguages: [
-    TvSpokenLanguage(
-      englishName: 'englishName',
-      iso6391: 'iso6391',
-      name: 'name',
-    )
   ],
   status: 'status',
   tagline: 'tagline',
@@ -285,16 +243,90 @@ final testTvSeriesDetail = TvDetail(
 );
 
 final testTvEpisodes = TvEpisode(
-  airDate: DateTime.parse("2014-04-14"),
+  airDate: '2014-04-14',
+  crew: [],
   episodeNumber: 1,
-  id: 1,
+  guestStars: [],
   name: 'name',
   overview: 'overview',
+  id: 1,
   productionCode: 'productionCode',
   seasonNumber: 1,
   stillPath: 'stillPath',
-  voteAverage: 1.0,
-  voteCount: 1,
+);
+
+final testEpisodeTvDetail = TvEpisode(
+  airDate: "2011-04-17",
+  crew: [
+    Crew(
+      id: 44797,
+      creditId: "5256c8a219c2956ff6046e77",
+      name: "Tim Van Patten",
+      department: "Directing",
+      job: "Director",
+      profilePath: "/6b7l9YbkDHDOzOKUFNqBVaPjcgm.jpg",
+    )
+  ],
+  episodeNumber: 1,
+  guestStars: [
+    GuestStars(
+      id: 117642,
+      name: "Jason Momoa",
+      creditId: "5256c8a219c2956ff6046f40",
+      character: "Khal Drogo",
+      order: 0,
+      profilePath: "/PSK6GmsVwdhqz9cd1lwzC6a7EA.jpg",
+    ),
+  ],
+  name: "Winter Is Coming",
+  overview:
+      "Jon Arryn, the Hand of the King, is dead. King Robert Baratheon plans to ask his oldest friend, Eddard Stark, to take Jon's place. Across the sea, Viserys Targaryen plans to wed his sister to a nomadic warlord in exchange for an army.",
+  id: 63056,
+  productionCode: "101",
+  seasonNumber: 1,
+  stillPath: "/wrGWeW4WKxnaeA8sxJb2T9O6ryo.jpg",
+);
+
+final testSeasonTvDetail = TvSeason(
+  itemId: 'itemId',
+  airDate: '2011-04-17',
+  episodes: [
+    TvEpisode(
+      airDate: '2011-04-17',
+      crew: [
+        Crew(
+          id: 1,
+          creditId: 'creditId',
+          name: 'name',
+          department: 'department',
+          job: 'job',
+          profilePath: 'profilePath',
+        ),
+      ],
+      episodeNumber: 1,
+      guestStars: [
+        GuestStars(
+          id: 1,
+          name: 'name',
+          creditId: 'creditId',
+          character: 'character',
+          order: 0,
+          profilePath: 'profilePath',
+        ),
+      ],
+      name: 'name',
+      overview: "overview",
+      id: 1,
+      productionCode: '123',
+      seasonNumber: 1,
+      stillPath: 'stillPath',
+    ),
+  ],
+  name: 'name',
+  overview: 'overview',
+  id: 1,
+  posterPath: 'posterPath',
+  seasonNumber: 1,
 );
 
 final testWatchlistTvSeries = Tv.watchlist(
@@ -324,6 +356,29 @@ final testWatchlistTv = Tv.watchlist(
   posterPath: 'posterPath',
   overview: 'overview',
 );
+final testTvCache = TvTable(
+  id: 1399,
+  name: 'Game of Thrones',
+  posterPath: '/jIhL6mlT7AblhbHJgEoiBIOUVl1.jpg',
+  overview:
+      "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
+);
+
+final testTvFromCache = Tv.watchlist(
+  id: 1399,
+  overview:
+      "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
+  posterPath: '/jIhL6mlT7AblhbHJgEoiBIOUVl1.jpg',
+  name: 'Game of Thrones',
+);
+
+final testTvCacheMap = {
+  'id': 1399,
+  'overview':
+      "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
+  'poster_path': '/jIhL6mlT7AblhbHJgEoiBIOUVl1.jpg',
+  'name': 'Game of Thrones',
+};
 
 class FakeHomePage extends StatelessWidget {
   @override

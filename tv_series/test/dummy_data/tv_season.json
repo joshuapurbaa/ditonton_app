@@ -1,0 +1,41 @@
+{
+          "_id": "itemId",
+          "air_date": "2011-04-17",
+          "episodes": [
+                    {
+                              "air_date": "2011-04-17",
+                              "crew": [
+                                        {
+                                                  "id": 1,
+                                                  "credit_id": "creditId",
+                                                  "name": "name",
+                                                  "department": "department",
+                                                  "job": "job",
+                                                  "profile_path": "profilePath"
+                                        }
+                              ],
+                              "episode_number": 1,
+                              "guest_stars": [
+                                        {
+                                                  "id": 1,
+                                                  "name": "name",
+                                                  "credit_id": "creditId",
+                                                  "character": "character",
+                                                  "order": 0,
+                                                  "profile_path": "profilePath"
+                                        }
+                              ],
+                              "name": "name",
+                              "overview": "overview",
+                              "id": 1,
+                              "production_code": "123",
+                              "season_number": 1,
+                              "still_path": "stillPath"
+                    }
+          ],
+          "name": "name",
+          "overview": "overview",
+          "id": 1,
+          "poster_path": "posterPath",
+          "season_number": 1
+}

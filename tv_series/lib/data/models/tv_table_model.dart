@@ -1,3 +1,5 @@
+import 'package:tv_series/data/models/tv_model.dart';
+
 import '../../domain/entities/tv.dart';
 import '../../domain/entities/tv_detail.dart';
 import 'package:equatable/equatable.dart';
@@ -27,6 +29,13 @@ class TvTable extends Equatable {
         name: map['name'],
         posterPath: map['poster_path'],
         overview: map['overview'],
+      );
+
+  factory TvTable.fromDTO(TvModel tv) => TvTable(
+        id: tv.id,
+        name: tv.name,
+        posterPath: tv.posterPath,
+        overview: tv.overview,
       );
 
   Map<String, dynamic> toJson() => {

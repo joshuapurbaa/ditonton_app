@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:movies/data/models/movie_table.dart';
 import 'package:movies/domain/entities/movie_detail.dart';
 import 'package:movies/movies.dart';
+import 'package:tv_series/domain/entities/tv_episodes_detail.dart';
 import 'package:tv_series/tv_series.dart';
 
 final testMovie = Movie(
@@ -94,7 +95,7 @@ final testTv = Tv(
   voteAverage: 1.39,
   overview:
       'The early life of Queen Victoria, from her accession to the throne at the tender age of 18 through to her courtship and marriage to Prince Albert. Victoria went on to rule for 63 years, and was the longest-serving monarch until she was overtaken by Elizabeth II on 9th September 2016. Rufus Sewell was Victoria’s first prime minister; the two immediately connected and their intimate friendship became a popular source of gossip that threatened to destabilise the Government – angering both Tory and Whigs alike.',
-  firstAirDate: DateTime.parse('2016-08-28'),
+  firstAirDate: '2016-08-28',
   originCountry: ['GB'],
   genreIds: [18],
   originalLanguage: 'en',
@@ -114,61 +115,45 @@ final tvNetwork = TvNetwork(
 
 final testTvDetail = TvDetail(
   backdropPath: 'backdropPath',
-  createdBy: [
-    CreatedBy(
-      id: 1,
-      creditId: 'creditId',
-      name: 'name',
-      gender: 1,
-      profilePath: 'profilePath',
-    )
-  ],
   episodeRunTime: [1, 2],
-  firstAirDate: DateTime.parse("2014-04-14"),
+  firstAirDate: "2014-04-14",
   genres: [
     Genre(
       id: 1,
       name: 'Action',
     ),
   ],
-  homepage: 'homepage',
   id: 1,
+  homepage: 'homepage',
   inProduction: true,
-  languages: ['aa', 'bb'],
-  lastAirDate: DateTime.parse("2014-04-14"),
-  lastEpisodeToAir: TVLastEpisodesToAir(
-    airDate: DateTime.parse("2014-04-14"),
+  lastAirDate: '2014-04-20',
+  lastEpisodeToAir: TvEpisodeDetail(
+    airDate: "2014-04-14",
     episodeNumber: 1,
     id: 1,
     name: 'name',
     overview: 'overview',
-    productionCode: 'productionCode',
-    seasonNumber: 1,
     stillPath: 'stillPath',
-    voteAverage: 0,
-    voteCount: 1,
   ),
   name: 'name',
-  nextEpisodeToAir: 12,
-  networks: [tvNetwork],
+  nextEpisodeToAir: TvEpisodeDetail(
+    airDate: "2015-04-14",
+    episodeNumber: 2,
+    id: 2,
+    name: 'name',
+    overview: 'overview',
+    stillPath: 'stillPath',
+  ),
   numberOfEpisodes: 1,
   numberOfSeasons: 1,
-  originCountry: ['aa'],
   originalLanguage: 'originalLanguage',
   originalName: 'originalName',
   overview: 'overview',
   popularity: 1.1,
   posterPath: 'posterPath',
-  productionCompanies: [tvNetwork],
-  productionCountries: [
-    TvProductionCountry(
-      iso31661: 'iso31661',
-      name: 'name',
-    )
-  ],
   seasons: [
-    TvSeason(
-      airDate: DateTime.parse("2014-04-14"),
+    TvSeasonDetail(
+      airDate: '2014-04-14',
       episodeCount: 1,
       id: 1,
       name: 'name',
@@ -176,13 +161,6 @@ final testTvDetail = TvDetail(
       posterPath: 'posterPath',
       seasonNumber: 1,
     ),
-  ],
-  spokenLanguages: [
-    TvSpokenLanguage(
-      englishName: 'englishName',
-      iso6391: 'iso6391',
-      name: 'name',
-    )
   ],
   status: 'status',
   tagline: 'tagline',
@@ -193,7 +171,7 @@ final testTvDetail = TvDetail(
 
 final testTvSeries = Tv(
   backdropPath: 'backdropPath',
-  firstAirDate: DateTime.parse('2016-08-28'),
+  firstAirDate: '2016-08-28',
   genreIds: [],
   id: 1,
   name: 'name',
@@ -209,61 +187,45 @@ final testTvSeries = Tv(
 
 final testTvSeriesDetail = TvDetail(
   backdropPath: 'backdropPath',
-  createdBy: [
-    CreatedBy(
-      id: 1,
-      creditId: 'creditId',
-      name: 'name',
-      gender: 1,
-      profilePath: 'profilePath',
-    )
-  ],
   episodeRunTime: [1, 2],
-  firstAirDate: DateTime.parse("2014-04-14"),
+  firstAirDate: "2014-04-14",
   genres: [
     Genre(
       id: 1,
       name: 'Action',
     ),
   ],
-  homepage: 'homepage',
   id: 1,
+  homepage: 'homepage',
   inProduction: true,
-  languages: ['aa', 'bb'],
-  lastAirDate: DateTime.parse("2014-04-14"),
-  lastEpisodeToAir: TVLastEpisodesToAir(
-    airDate: DateTime.parse("2014-04-14"),
+  lastAirDate: '2014-04-20',
+  lastEpisodeToAir: TvEpisodeDetail(
+    airDate: "2014-04-14",
     episodeNumber: 1,
     id: 1,
     name: 'name',
     overview: 'overview',
-    productionCode: 'productionCode',
-    seasonNumber: 1,
     stillPath: 'stillPath',
-    voteAverage: 0,
-    voteCount: 1,
   ),
   name: 'name',
-  nextEpisodeToAir: 12,
-  networks: [tvNetwork],
+  nextEpisodeToAir: TvEpisodeDetail(
+    airDate: "2015-04-14",
+    episodeNumber: 2,
+    id: 2,
+    name: 'name',
+    overview: 'overview',
+    stillPath: 'stillPath',
+  ),
   numberOfEpisodes: 1,
   numberOfSeasons: 1,
-  originCountry: ['aa'],
   originalLanguage: 'originalLanguage',
   originalName: 'originalName',
   overview: 'overview',
   popularity: 1.1,
   posterPath: 'posterPath',
-  productionCompanies: [tvNetwork],
-  productionCountries: [
-    TvProductionCountry(
-      iso31661: 'iso31661',
-      name: 'name',
-    )
-  ],
   seasons: [
-    TvSeason(
-      airDate: DateTime.parse("2014-04-14"),
+    TvSeasonDetail(
+      airDate: '2014-04-14',
       episodeCount: 1,
       id: 1,
       name: 'name',
@@ -272,18 +234,24 @@ final testTvSeriesDetail = TvDetail(
       seasonNumber: 1,
     ),
   ],
-  spokenLanguages: [
-    TvSpokenLanguage(
-      englishName: 'englishName',
-      iso6391: 'iso6391',
-      name: 'name',
-    )
-  ],
   status: 'status',
   tagline: 'tagline',
   type: 'type',
   voteAverage: 1.1,
   voteCount: 1,
+);
+
+final testTvEpisodes = TvEpisode(
+  airDate: "2014-04-14",
+  crew: [],
+  episodeNumber: 1,
+  guestStars: [],
+  name: 'name',
+  overview: 'overview',
+  id: 1,
+  productionCode: 'productionCode',
+  seasonNumber: 1,
+  stillPath: 'stillPath',
 );
 
 final testWatchlistTvSeries = Tv.watchlist(
@@ -303,7 +271,7 @@ final testTvTable = TvTable(
 final testTvMap = {
   'id': 1,
   'overview': 'overview',
-  'posterPath': 'posterPath',
+  'poster_path': 'posterPath',
   'name': 'name',
 };
 

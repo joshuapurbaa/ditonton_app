@@ -7,6 +7,8 @@ abstract class TvLocalDataSource {
   Future<String> removeWatchlistTv(TvTable tv);
   Future<TvTable?> getTvSeriesById(int id);
   Future<List<TvTable>> getWatchlistTVs();
+  Future<void> cacheTv(List<TvTable> cTv, String categories);
+  Future<List<TvTable>> getCacheTv(String categories);
 }
 
 class TvLocalDataSourceImpl implements TvLocalDataSource {
@@ -48,5 +50,21 @@ class TvLocalDataSourceImpl implements TvLocalDataSource {
   Future<List<TvTable>> getWatchlistTVs() async {
     final result = await databaseHelper.getWatchlistTVs();
     return result.map((data) => TvTable.fromMap(data)).toList();
+  }
+
+  @override
+  Future<void> cacheTv(List<TvTable> cTv, String categories) async {
+    await databaseHelper.clearCacheTv(categories);
+    await databaseHelper.insertCacheTransactionTv(cTv, categories);
+  }
+
+  @override
+  Future<List<TvTable>> getCacheTv(String categories) async {
+    final result = await databaseHelper.getCacheTv(categories);
+    if (result.length > 0) {
+      return result.map((e) => TvTable.fromMap(e)).toList();
+    } else {
+      throw CacheException("Can'nt get the data :(");
+    }
   }
 }

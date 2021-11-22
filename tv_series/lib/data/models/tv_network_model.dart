@@ -21,6 +21,13 @@ class TvNetworkModel extends Equatable {
         originCountry: json['origin_country'],
       );
 
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'id': id,
+        'logo_path': logoPath,
+        'origin_country': originCountry,
+      };
+
   TvNetwork toEntity() => TvNetwork(
         name: this.name,
         id: this.id,

@@ -63,7 +63,7 @@ void main() {
     });
   });
 
-  group('Get Tv Detail By Id', () {
+  group('Get Tv Series Detail By Id', () {
     final tId = 1;
 
     test('should return Tv Detail Table when data is found', () async {
@@ -96,6 +96,40 @@ void main() {
       final result = await dataSource.getWatchlistTVs();
       // assert
       expect(result, [testTvTable]);
+    });
+  });
+
+  group('cache tvs section', () {
+    test('should call database helper to save data', () async {
+      // arrange
+      when(mockDatabaseHelper.clearCacheTv('airingtoday'))
+          .thenAnswer((_) async => 1);
+      // act
+      await dataSource.cacheTv([testTvCache], 'airingtoday');
+      // assert
+      verify(mockDatabaseHelper.clearCacheTv('airingtoday'));
+      verify(mockDatabaseHelper
+          .insertCacheTransactionTv([testTvCache], 'airingtoday'));
+    });
+
+    test('should return list of tvs from db when data exist', () async {
+      // arrange
+      when(mockDatabaseHelper.getCacheTv('airingtoday'))
+          .thenAnswer((_) async => [testTvCacheMap]);
+      // act
+      final result = await dataSource.getCacheTv('airingtoday');
+      // assert
+      expect(result, [testTvCache]);
+    });
+
+    test('should throw CacheException when cache data is not exist', () async {
+      // arrange
+      when(mockDatabaseHelper.getCacheTv('airingtoday'))
+          .thenAnswer((_) async => []);
+      // act
+      final call = dataSource.getCacheTv('airingtoday');
+      // assert
+      expect(() => call, throwsA(isA<CacheException>()));
     });
   });
 }

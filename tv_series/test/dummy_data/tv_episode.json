@@ -1,92 +1,30 @@
 {
-          "_id": "5256c89f19c2956ff6046d47",
           "air_date": "2011-04-17",
-          "episodes": [
+          "crew": [
                     {
-                              "air_date": "2011-04-17",
-                              "episode_number": 1,
-                              "crew": [
-                                        {
-                                                  "department": "Directing",
-                                                  "job": "Director",
-                                                  "credit_id": "5256c8a219c2956ff6046e77",
-                                                  "adult": false,
-                                                  "gender": 2,
-                                                  "id": 44797,
-                                                  "known_for_department": "Directing",
-                                                  "name": "Timothy Van Patten",
-                                                  "original_name": "Timothy Van Patten",
-                                                  "popularity": 2.744,
-                                                  "profile_path": "/MzSOFrd99HRdr6pkSRSctk3kBR.jpg"
-                                        },
-                                        {
-                                                  "job": "Director of Photography",
-                                                  "department": "Camera",
-                                                  "credit_id": "54eef2429251417974005cb6",
-                                                  "adult": false,
-                                                  "gender": 2,
-                                                  "id": 1318704,
-                                                  "known_for_department": "Directing",
-                                                  "name": "Alik Sakharov",
-                                                  "original_name": "Alik Sakharov",
-                                                  "popularity": 1.22,
-                                                  "profile_path": null
-                                        },
-                                        {
-                                                  "job": "Editor",
-                                                  "department": "Editing",
-                                                  "credit_id": "54eef2ab925141795f005d4f",
-                                                  "adult": false,
-                                                  "gender": 2,
-                                                  "id": 18077,
-                                                  "known_for_department": "Editing",
-                                                  "name": "Oral Norrie Ottey",
-                                                  "original_name": "Oral Norrie Ottey",
-                                                  "popularity": 0.698,
-                                                  "profile_path": null
-                                        },
-                                        {
-                                                  "job": "Writer",
-                                                  "department": "Writing",
-                                                  "credit_id": "5256c8a019c2956ff6046e2b",
-                                                  "adult": false,
-                                                  "gender": 2,
-                                                  "id": 9813,
-                                                  "known_for_department": "Writing",
-                                                  "name": "David Benioff",
-                                                  "original_name": "David Benioff",
-                                                  "popularity": 1.778,
-                                                  "profile_path": "/xvNN5huL0X8yJ7h3IZfGG4O2zBD.jpg"
-                                        }
-                              ],
-                              "guest_stars": [
-                                        {
-                                                  "credit_id": "5701823092514160720007ea",
-                                                  "order": 500,
-                                                  "character": "Kevan Lannister",
-                                                  "adult": false,
-                                                  "gender": 2,
-                                                  "id": 1211852,
-                                                  "known_for_department": "Acting",
-                                                  "name": "Ian Gelder",
-                                                  "original_name": "Ian Gelder",
-                                                  "popularity": 1.62,
-                                                  "profile_path": "/j2XFWivkKcMVKrsyyT2CadqR9YL.jpg"
-                                        }
-                              ],
-                              "id": 63057,
-                              "name": "The Kingsroad",
-                              "overview": "While Bran recovers from his fall, Ned takes only his daughters to Kings Landing. Jon Snow goes with his uncle Benjen to The Wall. Tyrion joins them.",
-                              "production_code": "102",
-                              "season_number": 1,
-                              "still_path": "/icjOgl5F9DhysOEo6Six2Qfwcu2.jpg",
-                              "vote_average": 7.5,
-                              "vote_count": 118
+                              "id": 44797,
+                              "credit_id": "5256c8a219c2956ff6046e77",
+                              "name": "Tim Van Patten",
+                              "department": "Directing",
+                              "job": "Director",
+                              "profile_path": "/6b7l9YbkDHDOzOKUFNqBVaPjcgm.jpg"
                     }
           ],
-          "name": "Season 1",
-          "overview": "Trouble is brewing in the Seven Kingdoms of Westeros. For the driven inhabitants of this visionary world, control of Westeros' Iron Throne holds the lure of great power. But in a land where the seasons can last a lifetime, winter is coming...and beyond the Great Wall that protects them, an ancient evil has returned. In Season One, the story centers on three primary areas: the Stark and the Lannister families, whose designs on controlling the throne threaten a tenuous peace; the dragon princess Daenerys, heir to the former dynasty, who waits just over the Narrow Sea with her malevolent brother Viserys; and the Great Wall--a massive barrier of ice where a forgotten danger is stirring.",
-          "id": 3624,
-          "poster_path": "/zwaj4egrhnXOBIit1tyb4Sbt3KP.jpg",
-          "season_number": 1
+          "episode_number": 1,
+          "guest_stars": [
+                    {
+                              "id": 117642,
+                              "name": "Jason Momoa",
+                              "credit_id": "5256c8a219c2956ff6046f40",
+                              "character": "Khal Drogo",
+                              "order": 0,
+                              "profile_path": "/PSK6GmsVwdhqz9cd1lwzC6a7EA.jpg"
+                    }
+          ],
+          "name": "Winter Is Coming",
+          "overview": "Jon Arryn, the Hand of the King, is dead. King Robert Baratheon plans to ask his oldest friend, Eddard Stark, to take Jon's place. Across the sea, Viserys Targaryen plans to wed his sister to a nomadic warlord in exchange for an army.",
+          "id": 63056,
+          "production_code": "101",
+          "season_number": 1,
+          "still_path": "/wrGWeW4WKxnaeA8sxJb2T9O6ryo.jpg"
 }

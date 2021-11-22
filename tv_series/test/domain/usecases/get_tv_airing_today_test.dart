@@ -19,7 +19,7 @@ void main() {
 
   test('should get list of tv from the repository', () async {
     // arrange
-    when(mockTvRepository.getTvAiringToday())
+    when(mockTvRepository.getAiringTodayTv())
         .thenAnswer((_) async => Right(tTVs));
     // act
     final result = await getTvAiringToday.execute();

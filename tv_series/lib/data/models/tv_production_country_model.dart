@@ -16,6 +16,11 @@ class TvProductionCountryModel extends Equatable {
         name: json['name'],
       );
 
+  Map<String, dynamic> toJson() => {
+        "iso_3166_1": iso31661,
+        'name': name,
+      };
+
   TvProductionCountry toEntity() => TvProductionCountry(
         iso31661: this.iso31661,
         name: this.name,

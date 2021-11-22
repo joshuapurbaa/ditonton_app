@@ -26,7 +26,7 @@ void main() {
 
   final testTvSeries = Tv(
     backdropPath: 'backdropPath',
-    firstAirDate: DateTime.parse('2016-08-28'),
+    firstAirDate: '2016-08-28',
     genreIds: [],
     id: 1,
     name: 'name',

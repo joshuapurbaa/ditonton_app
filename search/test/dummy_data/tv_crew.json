@@ -1,0 +1,8 @@
+{
+          "id": 1,
+          "credit_id": "creditId",
+          "name": "name",
+          "department": "department",
+          "job": "job",
+          "profile_path": "profilePath"
+}

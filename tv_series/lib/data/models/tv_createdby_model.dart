@@ -24,6 +24,14 @@ class CreatedByModel extends Equatable {
         profilePath: json['profile_path'],
       );
 
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'credit_id': creditId,
+        'name': name,
+        'gender': gender,
+        'profile_path': profilePath,
+      };
+
   CreatedBy toEntity() => CreatedBy(
         id: this.id,
         creditId: this.creditId,

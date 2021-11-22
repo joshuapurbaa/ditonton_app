@@ -1,0 +1,8 @@
+{
+          "id": 1,
+          "name": "name",
+          "credit_id": "creditId",
+          "character": "character",
+          "order": 1,
+          "profile_path": "profilePath"
+}

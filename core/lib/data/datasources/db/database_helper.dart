@@ -155,10 +155,10 @@ class DatabaseHelper {
   /* TV SERIES */
 
   Future<void> insertCacheTransactionTv(
-      List<TvTable> tvSeries, String category) async {
+      List<TvTable> cTv, String category) async {
     final db = await database;
     db!.transaction((txn) async {
-      for (final tv in tvSeries) {
+      for (final tv in cTv) {
         final tvJson = tv.toJson();
         tvJson['category'] = category;
         txn.insert(

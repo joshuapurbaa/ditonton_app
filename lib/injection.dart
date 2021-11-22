@@ -176,7 +176,8 @@ void init() {
   locator.registerLazySingleton(() => GetTvRecommendations(locator()));
   locator.registerLazySingleton(() => SearchTVs(locator()));
   locator.registerLazySingleton(() => GetWatchListTVs(locator()));
-  locator.registerLazySingleton(() => GetTvSeasonEpisodes(locator()));
+  locator.registerLazySingleton(() => GetEpisodeTvDetail(locator()));
+  locator.registerLazySingleton(() => GetTvSeasonDetail(locator()));
 
   // repository
   locator.registerLazySingleton<MovieRepository>(
@@ -191,6 +192,7 @@ void init() {
     () => TvRepositoryImpl(
       remoteDataSource: locator(),
       localDataSource: locator(),
+      networkInfo: locator(),
     ),
   );
 
