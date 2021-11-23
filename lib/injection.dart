@@ -24,7 +24,9 @@ import 'package:get_it/get_it.dart';
 import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_detail_bloc.dart';
 import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_recommendations_bloc.dart';
 import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_watchlist_bloc.dart';
+import 'package:tv_series/presentation/bloc/tv_episode_bloc/tv_episode_bloc.dart';
 import 'package:tv_series/presentation/bloc/tv_home_bloc/tv_home_bloc.dart';
+import 'package:tv_series/presentation/bloc/tv_season_bloc/tv_season_bloc.dart';
 import 'package:tv_series/tv_series.dart';
 import 'package:tv_series/presentation/bloc/popular_tv_bloc/popular_tv_bloc.dart';
 import 'package:tv_series/presentation/bloc/top_rated_tv_bloc/top_rated_tv_bloc.dart';
@@ -149,6 +151,18 @@ void init() {
 
   locator.registerFactory(
     () => WatchlistTvBloc(
+      locator(),
+    ),
+  );
+
+  locator.registerFactory(
+    () => TvSeasonBloc(
+      locator(),
+    ),
+  );
+
+  locator.registerFactory(
+    () => TvEpisodeBloc(
       locator(),
     ),
   );

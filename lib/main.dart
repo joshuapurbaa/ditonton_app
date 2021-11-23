@@ -27,11 +27,15 @@ import 'package:search/search.dart';
 import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_detail_bloc.dart';
 import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_recommendations_bloc.dart';
 import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_watchlist_bloc.dart';
+import 'package:tv_series/presentation/bloc/tv_episode_bloc/tv_episode_bloc.dart';
 import 'package:tv_series/presentation/bloc/tv_home_bloc/tv_home_bloc.dart';
 import 'package:tv_series/presentation/bloc/popular_tv_bloc/popular_tv_bloc.dart';
 import 'package:tv_series/presentation/bloc/top_rated_tv_bloc/top_rated_tv_bloc.dart';
+import 'package:tv_series/presentation/bloc/tv_season_bloc/tv_season_bloc.dart';
 import 'package:tv_series/tv_series.dart';
 import 'package:core/presentation/watchlist_bloc/watchlist_movie_bloc.dart';
+import 'package:tv_series/presentation/pages/tv_season_page.dart';
+import 'package:tv_series/presentation/pages/tv_episode_page.dart';
 
 void main() {
   di.init();
@@ -105,6 +109,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<WatchlistTvBloc>(),
         ),
+        BlocProvider(
+          create: (_) => di.locator<TvSeasonBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<TvEpisodeBloc>(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -143,6 +153,22 @@ class MyApp extends StatelessWidget {
               final int id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (context) => DetailTvPage(id: id),
+              );
+            case TvSeasonPage.TV_SEASONS_ROUTE:
+              final arguments = settings.arguments as Map<String, int>;
+              return MaterialPageRoute(
+                builder: (_) => TvSeasonPage(
+                    id: arguments['id']!,
+                    seasonNumber: arguments['seasonNumber']!),
+              );
+            case TvEpisodePage.TV_EPISODE_ROUTE:
+              final arguments = settings.arguments as Map<String, int>;
+              return MaterialPageRoute(
+                builder: (_) => TvEpisodePage(
+                  id: arguments['id']!,
+                  seasonNumber: arguments['seasonNumber']!,
+                  episodeNumber: arguments['episodeNumber']!,
+                ),
               );
             case PopularTvPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => PopularTvPage());

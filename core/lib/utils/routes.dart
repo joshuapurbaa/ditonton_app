@@ -7,3 +7,5 @@ const WATCHLIST_ROUTE = '/watchlist-page';
 const TV_DETAIL_ROUTE = '/detail-tv';
 const POPULAR_TV_ROUTE = '/popular-tv';
 const TOP_RATED_TV_ROUTE = '/top-rated-tv';
+const TV_SEASONS_ROUTE = '/tv-season';
+const TV_EPISODE_ROUTE = '/tv-episode';

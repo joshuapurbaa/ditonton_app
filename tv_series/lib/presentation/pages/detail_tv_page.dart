@@ -5,11 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_detail_bloc.dart';
 import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_recommendations_bloc.dart';
 import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_watchlist_bloc.dart';
-import 'package:tv_series/presentation/widgets/tv_air_date.dart';
 import 'package:tv_series/tv_series.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/painting.dart';
 
 class DetailTvPage extends StatefulWidget {
   static const ROUTE_NAME = '/detail-tv';
@@ -141,81 +141,135 @@ class DetailContent extends StatelessWidget {
                                 tvDetail.name,
                                 style: kHeading5,
                               ),
-                              BlocBuilder<TvDetailWatchlistBloc,
-                                  TvWatchlistState>(
-                                buildWhen: (prev, cur) {
-                                  if (cur is ErrorStatus) {
-                                    return false;
-                                  }
-                                  return true;
-                                },
-                                builder: (context, state) {
-                                  if (state is ReceivedStatus) {
-                                    return ElevatedButton(
-                                      key: Key('btn_watchlist'),
-                                      onPressed: () async {
-                                        if (!state.status) {
-                                          context
-                                              .read<TvDetailWatchlistBloc>()
-                                              .add(AddWatchlist(tvDetail));
-                                        } else {
-                                          context
-                                              .read<TvDetailWatchlistBloc>()
-                                              .add(RemoveFromWatchlist(
-                                                  tvDetail));
-                                        }
-                                      },
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          (state.status)
-                                              ? Icon(Icons.check)
-                                              : Icon(Icons.add),
-                                          Text('Watchlist'),
-                                        ],
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  BlocBuilder<TvDetailWatchlistBloc,
+                                      TvWatchlistState>(
+                                    buildWhen: (prev, cur) {
+                                      if (cur is ErrorStatus) {
+                                        return false;
+                                      }
+                                      return true;
+                                    },
+                                    builder: (context, state) {
+                                      if (state is ReceivedStatus) {
+                                        return ElevatedButton(
+                                          key: Key('btn_watchlist'),
+                                          onPressed: () async {
+                                            if (!state.status) {
+                                              context
+                                                  .read<TvDetailWatchlistBloc>()
+                                                  .add(AddWatchlist(tvDetail));
+                                            } else {
+                                              context
+                                                  .read<TvDetailWatchlistBloc>()
+                                                  .add(RemoveFromWatchlist(
+                                                      tvDetail));
+                                            }
+                                          },
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              (state.status)
+                                                  ? Icon(Icons.check)
+                                                  : Icon(Icons.add),
+                                              Text('Watchlist'),
+                                            ],
+                                          ),
+                                        );
+                                      } else {
+                                        return CircularProgressIndicator();
+                                      }
+                                    },
+                                  ),
+                                  Row(
+                                    children: [
+                                      RatingBarIndicator(
+                                        rating: tvDetail.voteAverage / 2,
+                                        itemCount: 5,
+                                        itemBuilder: (context, index) => Icon(
+                                          Icons.star,
+                                          color: kMikadoYellow,
+                                        ),
+                                        itemSize: 24,
                                       ),
-                                    );
-                                  } else {
-                                    return CircularProgressIndicator();
-                                  }
-                                },
+                                      Text('${tvDetail.voteAverage}')
+                                    ],
+                                  ),
+                                ],
                               ),
                               Text(
                                 _showGenres(tvDetail.genres),
+                                style: kBodyText,
                               ),
-                              Text(
-                                tvDetail.episodeRunTime.isEmpty
-                                    ? ''
-                                    : '${_showDuration(tvDetail.episodeRunTime.first)}/episode',
-                              ),
-                              TvSeriesAirDate(tvSeries: tvDetail),
-                              Row(
-                                children: [
-                                  RatingBarIndicator(
-                                    rating: tvDetail.voteAverage / 2,
-                                    itemCount: 5,
-                                    itemBuilder: (context, index) => Icon(
-                                      Icons.star,
-                                      color: kMikadoYellow,
-                                    ),
-                                    itemSize: 24,
+                              SizedBox(height: 10),
+                              Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(8),
                                   ),
-                                  Text('${tvDetail.voteAverage}')
-                                ],
+                                  border: Border.all(
+                                    color: kDavysGrey,
+                                  ),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(4),
+                                      decoration: BoxDecoration(
+                                          color: kDavysGrey,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(8))),
+                                      child: Text(
+                                        tvDetail.episodeRunTime.isEmpty
+                                            ? ''
+                                            : '${_showDuration(tvDetail.episodeRunTime.first)}/episode',
+                                      ),
+                                    ),
+                                    SizedBox(height: 10),
+                                    Text(
+                                      'Overview',
+                                      style: kHeading6,
+                                    ),
+                                    Text(
+                                      tvDetail.overview,
+                                    ),
+                                    SizedBox(height: 16),
+                                    Text(
+                                      'Last Episodes${tvDetail.lastEpisodeToAir != null ? ' (Episode ${tvDetail.lastEpisodeToAir!.episodeNumber})' : ''}',
+                                      style: kSubtitle,
+                                    ),
+                                  ],
+                                ),
                               ),
                               SizedBox(height: 16),
                               Text(
-                                'Overview',
+                                'Season',
                                 style: kHeading6,
                               ),
-                              Text(
-                                tvDetail.overview,
+                              SizedBox(height: 5),
+                              Container(
+                                height: 150,
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    final item = tvDetail.seasons[index];
+                                    return _tvSeason(
+                                        context, index, tvDetail.id, item);
+                                  },
+                                  itemCount: tvDetail.seasons.length,
+                                ),
                               ),
                               SizedBox(height: 16),
                               Text(
                                 'Recommendations',
                                 style: kHeading6,
                               ),
+                              SizedBox(height: 5),
                               BlocBuilder<TvRecommendationsBloc,
                                   TvRecommendationsState>(
                                 builder: (context, state) {
@@ -234,43 +288,50 @@ class DetailContent extends StatelessWidget {
                                   } else if (state is TvRecommendationHasData) {
                                     return Container(
                                       height: 150,
-                                      child: ListView.builder(
-                                        scrollDirection: Axis.horizontal,
-                                        itemBuilder: (context, index) {
-                                          final tv =
-                                              state.recommendation[index];
-                                          return Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child: InkWell(
-                                              onTap: () {
-                                                Navigator.pushReplacementNamed(
-                                                  context,
-                                                  TV_DETAIL_ROUTE,
-                                                  arguments: tv.id,
+                                      child: state.recommendation.length > 0
+                                          ? ListView.builder(
+                                              scrollDirection: Axis.horizontal,
+                                              itemBuilder: (context, index) {
+                                                final tv =
+                                                    state.recommendation[index];
+                                                return Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(4.0),
+                                                  child: InkWell(
+                                                    onTap: () {
+                                                      Navigator
+                                                          .pushReplacementNamed(
+                                                        context,
+                                                        TV_DETAIL_ROUTE,
+                                                        arguments: tv.id,
+                                                      );
+                                                    },
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                        Radius.circular(8),
+                                                      ),
+                                                      child: CachedNetworkImage(
+                                                        imageUrl:
+                                                            'https://image.tmdb.org/t/p/w500${tv.posterPath}',
+                                                        placeholder:
+                                                            (context, url) =>
+                                                                Center(
+                                                          child:
+                                                              CircularProgressIndicator(),
+                                                        ),
+                                                        errorWidget: (context,
+                                                                url, error) =>
+                                                            Icon(Icons.error),
+                                                      ),
+                                                    ),
+                                                  ),
                                                 );
                                               },
-                                              child: ClipRRect(
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(8),
-                                                ),
-                                                child: CachedNetworkImage(
-                                                  imageUrl:
-                                                      'https://image.tmdb.org/t/p/w500${tv.posterPath}',
-                                                  placeholder: (context, url) =>
-                                                      Center(
-                                                    child:
-                                                        CircularProgressIndicator(),
-                                                  ),
-                                                  errorWidget:
-                                                      (context, url, error) =>
-                                                          Icon(Icons.error),
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                        itemCount: state.recommendation.length,
-                                      ),
+                                              itemCount:
+                                                  state.recommendation.length,
+                                            )
+                                          : Text('No Recommendation'),
                                     );
                                   } else {
                                     return Container();
@@ -328,5 +389,75 @@ class DetailContent extends StatelessWidget {
     } else {
       return '${minutes}m';
     }
+  }
+
+  Widget _tvSeason(BuildContext ctx, int index, int id, TvSeasonDetail season) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 10),
+      child: InkWell(
+        onTap: season.episodeCount < 1
+            ? null
+            : () {
+                Navigator.pushNamed(
+                  ctx,
+                  TV_SEASONS_ROUTE,
+                  arguments: {
+                    'id': id,
+                    'seasonNumber': season.seasonNumber,
+                  },
+                );
+              },
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.all(
+                Radius.circular(8),
+              ),
+              child: CachedNetworkImage(
+                imageUrl: season.posterPath != null
+                    ? '$BASE_IMAGE_URL${season.posterPath}'
+                    : '$NO_IMAGE_URL',
+                width: 100,
+                placeholder: (context, url) => Center(
+                  child: CircularProgressIndicator(),
+                ),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
+            ),
+            Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    width: 100,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                            colors: [Colors.black, Colors.transparent])),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.play_circle,
+                          size: 40,
+                          color: Colors.grey,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          season.name ?? "Seasons $index",
+                          style: kBodyText,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

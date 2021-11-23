@@ -136,7 +136,7 @@ class MockTvRepository extends _i1.Mock implements _i3.TvRepository {
 
   @override
   _i6.Future<_i2.Either<_i9.Failure, List<_i3.Tv>>> getAiringTodayTv() =>
-      (super.noSuchMethod(Invocation.method(#getTvAiringToday, []),
+      (super.noSuchMethod(Invocation.method(#getAiringTodayTv, []),
               returnValue: Future<_i2.Either<_i9.Failure, List<_i3.Tv>>>.value(
                   _FakeEither_0<_i9.Failure, List<_i3.Tv>>()))
           as _i6.Future<_i2.Either<_i9.Failure, List<_i3.Tv>>>);
