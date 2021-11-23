@@ -56,7 +56,7 @@ class _TvEpisodePageState extends State<TvEpisodePage> {
           } else if (state is EpisodeError) {
             return Text(
               state.message,
-              key: Key('episodes_message'),
+              key: Key('episodes_message_error'),
             );
           } else {
             return Center(

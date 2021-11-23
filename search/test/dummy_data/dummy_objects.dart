@@ -105,13 +105,6 @@ final testTv = Tv(
 
 final testTvList = [testTv];
 
-final tvNetwork = TvNetwork(
-  name: 'name',
-  id: 1,
-  logoPath: 'logoPath',
-  originCountry: 'originCountry',
-);
-
 final testTvDetail = TvDetail(
   backdropPath: 'backdropPath',
   episodeRunTime: [1, 2],

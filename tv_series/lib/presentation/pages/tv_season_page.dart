@@ -51,7 +51,7 @@ class _TvSeasonPageState extends State<TvSeasonPage> {
           } else if (state is SeasonError) {
             return Text(
               state.message,
-              key: Key('season_message'),
+              key: Key('season_message_error'),
             );
           } else {
             return Center(

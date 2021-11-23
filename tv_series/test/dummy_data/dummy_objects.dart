@@ -107,13 +107,6 @@ final testTv = Tv(
 
 final testTvList = [testTv];
 
-final tvNetwork = TvNetwork(
-  name: 'name',
-  id: 1,
-  logoPath: 'logoPath',
-  originCountry: 'originCountry',
-);
-
 final testTvDetail = TvDetail(
   backdropPath: 'backdropPath',
   episodeRunTime: [1, 2],
@@ -326,6 +319,50 @@ final testSeasonTvDetail = TvSeason(
   overview: 'overview',
   id: 1,
   posterPath: 'posterPath',
+  seasonNumber: 1,
+);
+
+final testTvSeasonWithImage = TvSeason(
+  itemId: '5256c89f19c2956ff6046d47',
+  airDate: '2011-04-17',
+  episodes: [
+    TvEpisode(
+      airDate: '2011-04-17',
+      crew: [
+        Crew(
+          id: 44797,
+          creditId: '5256c8a219c2956ff6046e77',
+          name: 'Timothy Van Patten',
+          department: 'Directing',
+          job: 'Director',
+          profilePath: '/MzSOFrd99HRdr6pkSRSctk3kBR.jpg',
+        ),
+      ],
+      episodeNumber: 1,
+      guestStars: [
+        GuestStars(
+          id: 117642,
+          name: 'Jason Momoa',
+          creditId: '5256c8a219c2956ff6046f40',
+          character: 'Khal Drogo',
+          order: 0,
+          profilePath: '/6dEFBpZH8C8OijsynkSajQT99Pb.jpg',
+        ),
+      ],
+      name: 'Lord Snow',
+      overview:
+          "Lord Stark and his daughters arrive at King's Landing to discover the intrigues of the king's realm.",
+      id: 63058,
+      productionCode: '103',
+      seasonNumber: 1,
+      stillPath: '/4vCYVtIhiYSUry1lviA7CKPUB5Z.jpg',
+    ),
+  ],
+  name: 'Season 1',
+  overview:
+      "Trouble is brewing in the Seven Kingdoms of Westeros. For the driven inhabitants of this visionary world, control of Westeros' Iron Throne holds the lure of great power. But in a land where the seasons can last a lifetime, winter is coming...and beyond the Great Wall that protects them, an ancient evil has returned. In Season One, the story centers on three primary areas: the Stark and the Lannister families, whose designs on controlling the throne threaten a tenuous peace; the dragon princess Daenerys, heir to the former dynasty, who waits just over the Narrow Sea with her malevolent brother Viserys; and the Great Wall--a massive barrier of ice where a forgotten danger is stirring.",
+  id: 3624,
+  posterPath: '/zwaj4egrhnXOBIit1tyb4Sbt3KP.jpg',
   seasonNumber: 1,
 );
 

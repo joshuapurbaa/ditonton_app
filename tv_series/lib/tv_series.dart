@@ -21,7 +21,6 @@ export 'domain/repositories/tv_repository.dart';
 export 'domain/entities/tv_detail.dart';
 export 'domain/entities/tv_episode.dart';
 export 'data/datasources/tv_local_data_source.dart';
-export 'domain/entities/tv_network.dart';
 export 'domain/entities/tv_season.dart';
 export 'data/models/tv_table_model.dart';
 export 'data/datasources/tv_remote_data_source.dart';
