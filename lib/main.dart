@@ -3,6 +3,7 @@ import 'package:core/core.dart';
 import 'package:core/presentation/main_page.dart';
 import 'package:core/presentation/watchlist_bloc/watchlist_tv_bloc.dart';
 import 'package:core/presentation/watchlist_page.dart';
+import 'package:core/utils/connection.dart';
 
 import 'package:core/utils/utils.dart';
 
@@ -37,7 +38,8 @@ import 'package:core/presentation/watchlist_bloc/watchlist_movie_bloc.dart';
 import 'package:tv_series/presentation/pages/tv_season_page.dart';
 import 'package:tv_series/presentation/pages/tv_episode_page.dart';
 
-void main() {
+void main() async {
+  await Connection.initClient();
   di.init();
   runApp(MyApp());
 }

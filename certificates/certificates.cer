@@ -1,9 +1,4 @@
-const String BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
-const String NO_IMAGE_URL =
-    'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-15.png';
-
-const sslCert =
-    """-----BEGIN CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
 MIIF5zCCBM+gAwIBAgIQAdKnBRs48TrGZbcfFRKNgDANBgkqhkiG9w0BAQsFADBG
 MQswCQYDVQQGEwJVUzEPMA0GA1UEChMGQW1hem9uMRUwEwYDVQQLEwxTZXJ2ZXIg
 Q0EgMUIxDzANBgNVBAMTBkFtYXpvbjAeFw0yMTEwMjEwMDAwMDBaFw0yMjExMTgy
@@ -36,4 +31,4 @@ AAHoVgjJSWWhy+t66cPauipX2dR0b4Ul0cz42aRlmpExJwRqm7jCtpaJU3nuxOwN
 jia+Kff2MpLspB3nHmHOZ2gvwU05oiZQvnranwshboDhCDV3ucFX4IKPr74+1P8l
 DUpiVEdsyxDA9Sbkc2QS57dWiD0Ju55Sxhhd1uSHi4aqKaFpAA4XZr4edUwWFE4c
 4JJi1ufB/lOcf+G5uV2HrO27/FScF/8dZyzy
------END CERTIFICATE-----""";
+-----END CERTIFICATE-----

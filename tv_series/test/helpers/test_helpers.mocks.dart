@@ -13,7 +13,7 @@ import 'package:dartz/dartz.dart' as _i2;
 import 'package:http/http.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:movies/data/models/movie_table.dart' as _i8;
-import 'package:sqflite/sqflite.dart' as _i7;
+import 'package:sqflite_sqlcipher/sqflite.dart' as _i7;
 import 'package:tv_series/tv_series.dart' as _i3;
 
 // ignore_for_file: avoid_redundant_argument_values

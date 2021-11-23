@@ -1,5 +1,6 @@
 import 'package:core/core.dart';
 import 'package:core/presentation/watchlist_bloc/watchlist_tv_bloc.dart';
+import 'package:core/utils/connection.dart';
 import 'package:movies/domain/usecase/get_movie_detail.dart';
 import 'package:movies/domain/usecase/get_movie_recommendations.dart';
 import 'package:movies/domain/usecase/get_now_playing_movies.dart';
@@ -19,7 +20,6 @@ import 'package:core/data/datasources/db/database_helper.dart';
 import 'package:core/presentation/watchlist_bloc/watchlist_movie_bloc.dart';
 import 'package:movies/presentation/bloc/movie_home_bloc/movie_home_bloc.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
-import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_detail_bloc.dart';
 import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_recommendations_bloc.dart';
@@ -229,6 +229,6 @@ void init() {
   locator.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(locator()));
 
   // external
-  locator.registerLazySingleton(() => http.Client());
+  locator.registerLazySingleton(() => Connection.client);
   locator.registerLazySingleton(() => DataConnectionChecker());
 }

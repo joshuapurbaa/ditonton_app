@@ -237,7 +237,10 @@ class DetailContent extends StatelessWidget {
                                       style: kHeading6,
                                     ),
                                     Text(
-                                      tvDetail.overview,
+                                      tvDetail.overview.length < 1
+                                          ? '-'
+                                          : tvDetail.overview,
+                                      style: kBodyText,
                                     ),
                                     SizedBox(height: 16),
                                     Text(

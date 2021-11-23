@@ -19,7 +19,7 @@ import 'package:movies/data/models/movie_table.dart' as _i8;
 import 'package:movies/domain/entities/movie.dart' as _i12;
 import 'package:movies/domain/entities/movie_detail.dart' as _i13;
 import 'package:movies/domain/repositories/movie_repository.dart' as _i10;
-import 'package:sqflite/sqflite.dart' as _i7;
+import 'package:sqflite_sqlcipher/sqflite.dart' as _i7;
 import 'package:tv_series/tv_series.dart' as _i9;
 
 // ignore_for_file: avoid_redundant_argument_values
@@ -91,9 +91,9 @@ class MockDatabaseHelper extends _i1.Mock implements _i5.DatabaseHelper {
           as _i6.Future<List<Map<String, dynamic>>>);
   @override
   _i6.Future<void> insertCacheTransactionTv(
-          List<_i9.TvTable>? tvSeries, String? category) =>
+          List<_i9.TvTable>? cTv, String? category) =>
       (super.noSuchMethod(
-          Invocation.method(#insertCacheTransactionTv, [tvSeries, category]),
+          Invocation.method(#insertCacheTransactionTv, [cTv, category]),
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i6.Future<void>);
   @override

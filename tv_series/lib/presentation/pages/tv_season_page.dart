@@ -80,17 +80,20 @@ class SeasonContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        CachedNetworkImage(
-          imageUrl: tvSeason.posterPath != null
-              ? 'https://image.tmdb.org/t/p/w500${tvSeason.posterPath}'
-              : '$NO_IMAGE_URL',
-          placeholder: (context, url) => Center(
-            child: CircularProgressIndicator(),
-          ),
-          errorWidget: (context, url, error) => Icon(
-            Icons.error,
-          ),
-        ),
+        tvSeason.posterPath != null
+            ? CachedNetworkImage(
+                imageUrl:
+                    'https://image.tmdb.org/t/p/w500${tvSeason.posterPath}',
+                placeholder: (context, url) => Center(
+                  child: CircularProgressIndicator(),
+                ),
+                errorWidget: (context, url, error) => Icon(
+                  Icons.error,
+                ),
+              )
+            : Align(
+                alignment: Alignment.topCenter,
+                child: Image.network('$NO_IMAGE_URL')),
         Container(
           margin: const EdgeInsets.only(top: 48 + 8),
           child: DraggableScrollableSheet(
