@@ -1,0 +1,58 @@
+{
+          "backdrop_path": "backdropPath",
+          "episode_run_time": [
+                    1,
+                    2
+          ],
+          "first_air_date": "2014-04-14",
+          "genres": [
+                    {
+                              "id": 1,
+                              "name": "Action"
+                    }
+          ],
+          "homepage": "homepage",
+          "id": 1,
+          "in_production": true,
+          "last_air_date": "2014-04-20",
+          "last_episode_to_air": {
+                    "air_date": "2014-04-14",
+                    "episode_number": 1,
+                    "id": 1,
+                    "name": "name",
+                    "overview": "overview",
+                    "still_path": "stillPath"
+          },
+          "name": "name",
+          "next_episode_to_air": {
+                    "air_date": "2014-04-16",
+                    "episode_number": 2,
+                    "id": 2,
+                    "name": "name",
+                    "overview": "overview",
+                    "still_path": "stillPath"
+          },
+          "number_of_episodes": 1,
+          "number_of_seasons": 1,
+          "original_language": "originalLanguage",
+          "original_name": "originalName",
+          "overview": "overview",
+          "popularity": 1.1,
+          "poster_path": "posterPath",
+          "seasons": [
+                    {
+                              "air_date": "2014-04-19",
+                              "episode_count": 3,
+                              "id": 2,
+                              "name": "name",
+                              "overview": "overview",
+                              "poster_path": "posterPath",
+                              "season_number": 1
+                    }
+          ],
+          "status": "status",
+          "tagline": "tagline",
+          "type": "type",
+          "vote_average": 1.0,
+          "vote_count": 1
+}
