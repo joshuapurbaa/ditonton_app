@@ -68,7 +68,7 @@ void main() {
     '/second': (BuildContext contex) => _makeAnotherTestableWidget(widgetTest),
   };
 
-  group('Detail movie page', () {
+  group('Detail tv page', () {
     testWidgets(
         'should display CircularProgressIndicator when state is TvDetailLoading',
         (WidgetTester tester) async {
@@ -248,7 +248,7 @@ void main() {
       final listViewFinder = find.byType(ListView);
       await tester.pumpWidget(_makeTestableWidget(widgetTest));
 
-      expect(listViewFinder, findsOneWidget);
+      expect(listViewFinder, findsNWidgets(2));
     });
 
     testWidgets('Recommendations should display text with message when Error',
