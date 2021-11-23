@@ -206,6 +206,7 @@ class DetailContent extends StatelessWidget {
                               ),
                               SizedBox(height: 10),
                               Container(
+                                width: MediaQuery.of(context).size.width,
                                 padding: EdgeInsets.all(8),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.all(
@@ -248,7 +249,7 @@ class DetailContent extends StatelessWidget {
                               ),
                               SizedBox(height: 16),
                               Text(
-                                'Season',
+                                'Seasons',
                                 style: kHeading6,
                               ),
                               SizedBox(height: 5),

@@ -39,7 +39,7 @@ void main() {
 
   final routes = <String, WidgetBuilder>{
     '/': (BuildContext context) => FakeHomePage(),
-    MOVIE_DETAIL_ROUTE: (BuildContext context) => FakeTargetPage(),
+    TV_DETAIL_ROUTE: (BuildContext context) => FakeTargetPage(),
     '/second': (BuildContext context) => _makeAnotherTestableWidget(widgetTest),
   };
 

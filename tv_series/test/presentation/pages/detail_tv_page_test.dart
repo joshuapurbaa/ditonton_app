@@ -64,7 +64,7 @@ void main() {
 
   final routes = <String, WidgetBuilder>{
     '/': (BuildContext context) => FakeHomePage(),
-    MOVIE_DETAIL_ROUTE: (BuildContext context) => FakeTargetPage(),
+    TV_DETAIL_ROUTE: (BuildContext context) => FakeTargetPage(),
     '/second': (BuildContext contex) => _makeAnotherTestableWidget(widgetTest),
   };
 
@@ -119,8 +119,7 @@ void main() {
       expect(dssFinder, findsNothing);
     });
 
-    testWidgets(
-        'watchlist button should display add icon when movie not added  ',
+    testWidgets('watchlist button should display add icon when tv not added  ',
         (WidgetTester tester) async {
       when(() => mockTvDetailBloc.state)
           .thenReturn(TvDetailHasData(testTvDetail));
