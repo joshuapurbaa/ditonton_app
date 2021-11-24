@@ -20,6 +20,9 @@ dev_dependencies:
   test_cov_console: ^0.1.5
   
 flutter:
+  
+  assets:
+    - assets/
 
 
 
