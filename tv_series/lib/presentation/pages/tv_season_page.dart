@@ -123,6 +123,7 @@ class SeasonContent extends StatelessWidget {
                                 Text(
                                   tvSeason.name,
                                   style: kHeading5,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                                 Text(
                                   'Total Episode: ${tvSeason.episodes.length.toString()}',

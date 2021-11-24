@@ -82,19 +82,22 @@ class EpisodeContent extends StatelessWidget {
         children: [
           Stack(
             children: [
-              CachedNetworkImage(
-                height: 300,
-                fit: BoxFit.cover,
-                imageUrl: tvEpisode.stillPath != null
-                    ? 'https://image.tmdb.org/t/p/w500${tvEpisode.stillPath}'
-                    : '$NO_IMAGE_URL',
-                placeholder: (context, url) => Center(
-                  child: CircularProgressIndicator(),
-                ),
-                errorWidget: (context, url, error) => Icon(
-                  Icons.error,
-                ),
-              ),
+              tvEpisode.stillPath != null
+                  ? CachedNetworkImage(
+                      height: 300,
+                      fit: BoxFit.cover,
+                      imageUrl:
+                          'https://image.tmdb.org/t/p/w500${tvEpisode.stillPath}',
+                      placeholder: (context, url) => Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      errorWidget: (context, url, error) => Icon(
+                        Icons.error,
+                      ),
+                    )
+                  : Align(
+                      alignment: Alignment.topCenter,
+                      child: Image.network('$NO_IMAGE_URL')),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: CircleAvatar(

@@ -6,6 +6,7 @@ import 'package:core/presentation/watchlist_page.dart';
 import 'package:core/utils/connection.dart';
 
 import 'package:core/utils/utils.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +40,8 @@ import 'package:tv_series/presentation/pages/tv_season_page.dart';
 import 'package:tv_series/presentation/pages/tv_episode_page.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await Connection.initClient();
   di.init();
   runApp(MyApp());
