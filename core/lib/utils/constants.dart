@@ -1,7 +1,8 @@
 const String BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 const String NO_IMAGE_URL =
     'https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-15.png';
-
+const API_KEY = 'api_key=12a499afc0d6729089cbe35478df9371';
+const BASE_URL = 'https://api.themoviedb.org/3';
 const sslCert =
     """-----BEGIN CERTIFICATE-----
 MIIF5zCCBM+gAwIBAgIQAdKnBRs48TrGZbcfFRKNgDANBgkqhkiG9w0BAQsFADBG

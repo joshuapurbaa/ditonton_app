@@ -1,4 +1,4 @@
-import 'package:about/about_page.dart';
+import 'package:about/presentation/page/about_page.dart';
 import 'package:core/core.dart';
 import 'package:core/presentation/main_page.dart';
 import 'package:core/presentation/watchlist_bloc/watchlist_tv_bloc.dart';

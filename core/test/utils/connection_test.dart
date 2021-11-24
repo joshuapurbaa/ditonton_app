@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:core/utils/connection.dart';
+import 'package:core/utils/constants.dart';
 import 'package:core/utils/network_info.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:http/io_client.dart';
@@ -7,6 +8,14 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('SSL Pinning test', () {
+    test('should get response 200 when connection succeeded', () async {
+      final _client = await Connection.getClient;
+      final response =
+          await _client.get(Uri.parse('$BASE_URL/movie/now_playing?$API_KEY'));
+
+      expect(response.statusCode, 200);
+      _client.close();
+    });
     test('Make sure init works properly', () async {
       await Connection.initClient();
       expect(Connection.client, TypeMatcher<IOClient>());

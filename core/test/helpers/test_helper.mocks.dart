@@ -61,6 +61,9 @@ class MockDatabaseHelper extends _i1.Mock implements _i4.DatabaseHelper {
       Invocation.getter(#database),
       returnValue: Future<_i9.Database?>.value()) as _i8.Future<_i9.Database?>);
   @override
+  dynamic setDatabase(_i9.Database? database) =>
+      super.noSuchMethod(Invocation.method(#setDatabase, [database]));
+  @override
   _i8.Future<void> insertCacheTransactionMovie(
           List<_i10.MovieTable>? movies, String? category) =>
       (super.noSuchMethod(

@@ -23,6 +23,10 @@ class DatabaseHelper {
     return _database;
   }
 
+  setDatabase(Database database) {
+    _database = database;
+  }
+
   static const String _tblWatchlistMovie = 'watchlistMovie';
   static const String _tblWatchlistTv = 'watchlistTv';
   static const String _tblMovieCache = 'movieCachae';

@@ -61,7 +61,10 @@ class TvCard extends StatelessWidget {
                   placeholder: (context, url) => Center(
                     child: CircularProgressIndicator(),
                   ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
+                  errorWidget: (context, url, error) => Icon(
+                    Icons.error,
+                    key: Key('icon-error'),
+                  ),
                 ),
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),

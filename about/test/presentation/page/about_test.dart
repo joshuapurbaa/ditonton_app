@@ -1,29 +1,32 @@
-import 'package:about/about_page.dart';
+import 'package:about/presentation/page/about_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-class FakeHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: ListTile(
-      key: Key('fake_tile'),
-      onTap: () {
-        Navigator.pushNamed(context, '/second');
-      },
-      title: Text('This is Fake'),
-      leading: Icon(Icons.check),
-    ));
-  }
-}
+import '../../dummy_data/dummy_objects.dart';
 
 void main() {
+  Widget _makeTestableWidget(Widget body) {
+    return MaterialApp(
+      home: body,
+    );
+  }
+
   final routes = <String, WidgetBuilder>{
     '/': (BuildContext context) => FakeHomePage(),
     '/second': (BuildContext context) => AboutPage(),
   };
   setUpAll(() {
     TestWidgetsFlutterBinding.ensureInitialized();
+  });
+
+  testWidgets('Description app text should display',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(_makeTestableWidget(AboutPage()));
+
+    expect(
+        find.text(
+            'Ditonton merupakan sebuah aplikasi katalog film yang dikembangkan oleh Dicoding Indonesia sebagai contoh proyek aplikasi untuk kelas Menjadi Flutter Developer Expert.'),
+        findsOneWidget);
   });
 
   testWidgets('Page should render and go back when back tapped',

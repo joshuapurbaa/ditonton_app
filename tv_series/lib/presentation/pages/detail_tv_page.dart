@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_detail_bloc.dart';
 import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_recommendations_bloc.dart';
 import 'package:tv_series/presentation/bloc/tv_detail_bloc/tv_watchlist_bloc.dart';
+import 'package:tv_series/presentation/widgets/genre_and_duration.dart';
 import 'package:tv_series/tv_series.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -201,7 +202,7 @@ class DetailContent extends StatelessWidget {
                                 ],
                               ),
                               Text(
-                                _showGenres(tvDetail.genres),
+                                showGenres(tvDetail.genres),
                                 style: kBodyText,
                               ),
                               SizedBox(height: 10),
@@ -228,7 +229,7 @@ class DetailContent extends StatelessWidget {
                                       child: Text(
                                         tvDetail.episodeRunTime.isEmpty
                                             ? ''
-                                            : '${_showDuration(tvDetail.episodeRunTime.first)}/episode',
+                                            : '${showDuration(tvDetail.episodeRunTime.first)}/episode',
                                       ),
                                     ),
                                     SizedBox(height: 10),
@@ -369,30 +370,6 @@ class DetailContent extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  String _showGenres(List<Genre> genres) {
-    String result = '';
-    for (var genre in genres) {
-      result += genre.name + ', ';
-    }
-
-    if (result.isEmpty) {
-      return result;
-    }
-
-    return result.substring(0, result.length - 2);
-  }
-
-  String _showDuration(int runtime) {
-    final int hours = runtime ~/ 60;
-    final int minutes = runtime % 60;
-
-    if (hours > 0) {
-      return '${hours}h ${minutes}m';
-    } else {
-      return '${minutes}m';
-    }
   }
 
   Widget _tvSeason(BuildContext ctx, int index, int id, TvSeasonDetail season) {
