@@ -11,6 +11,6 @@ import 'package:movies/movies.dart';
   MovieRemoteDataSource,
   MovieLocalDataSource,
 ], customMocks: [
-  MockSpec<http.Client>(as: #MockHttpClient)
+  MockSpec<http.Client>(as: #MockHttpClient),
 ])
 void main() {}
